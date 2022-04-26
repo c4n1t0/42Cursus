@@ -6,11 +6,11 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 11:46:18 by jaromero          #+#    #+#             */
-/*   Updated: 2022/04/25 12:31:28 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/04/25 12:31:50 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
 
 int	ft_atoi(const char *nptr)
 {
@@ -35,13 +35,4 @@ int	ft_atoi(const char *nptr)
 	}
 	dev = dev * signo;
 	return (dev);
-}
-
-int	main(void)
-{
-	int x;
-	const char nptr[] = "+-54";
-
-	x = ft_atoi(nptr);
-	printf("devuelve %d\n", x);
 }

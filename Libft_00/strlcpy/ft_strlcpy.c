@@ -6,29 +6,20 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 10:00:17 by jaromero          #+#    #+#             */
-/*   Updated: 2022/04/24 09:31:35 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/04/26 13:53:34 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-#include <stdio.h>
-#include <string.h>
+#include "libft.h"
 
-int	ft_strlcpy(char *dst, const char *src, size_t size)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	int			count;
-	const char	*p;
+	size_t	count;
 
-	count = 0;
-	p = src;
-	while (*p != '\0')
-	{
-		count++;
-		p++;
-	}
+	count = ft_strlen(src);
 	if (size > 0)
 	{
-		while (size - 1 > 0)
+		while (size - 1 > 0 && *src != '\0')
 		{
 			*dst = *src;
 			dst++;

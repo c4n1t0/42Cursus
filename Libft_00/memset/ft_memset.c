@@ -6,11 +6,11 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 10:43:26 by jaromero          #+#    #+#             */
-/*   Updated: 2022/04/20 12:08:48 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/04/23 23:22:57 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
 void	*ft_memset(void *str, int c, size_t n)
 {

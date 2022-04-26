@@ -6,28 +6,26 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 09:30:40 by jaromero          #+#    #+#             */
-/*   Updated: 2022/04/25 09:36:07 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/04/26 17:41:13 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	while (*s != '\0' && n > 0)
+	char	*p;
+
+	p = (char *)s;
+	while (*p != '\0' && n > 0)
 	{
-		if (*s == c)
-			return (s);
+		if (*p == c)
+			return (p);
 		else
 		{
-			s++;
+			p++;
 			n--;
 		}
 	}
-	if (*s != '\0')
-	{
-		while (*s != '\0')
-			s++;
-	}
-	return (s);
+	return (NULL);
 }
