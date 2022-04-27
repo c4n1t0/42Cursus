@@ -6,46 +6,91 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 23:45:45 by jaromero          #+#    #+#             */
-/*   Updated: 2022/04/27 00:32:40 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/04/27 18:27:30 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strtrim(char const *s1, char const *set)
+char	*ft_ini(char const *s1, char const *set)
 {
-	char *p;
-	char *q;
-	char *x;
-	int i;
-	int count;
+	char	*s;
+	char	*n;
 
-	count = 0;
-	x = (char *)set;
-	p = (char *)s1;
-	q = (char *)s1 + ft_strlen(s1);
+	s = (char *)set;
+	n = (char *)s1;
+	while (*s != '\0')
+	{
+		if (*n == *s)
+		{
+			n++;
+			s = set;
+		}
+		else
+			s++;
+	}
+	return (n);
+}
+
+void	*ft_fin(char const *s1, char const *set)
+{
+	char	*s;
+	char	*x;
+
+	x = (char *)s1;
+	s = (char *)set;
+	while (*x != '\0')
+		x++;
+	x--;
+	while (*s != '\0')
+	{
+		if (*x == *s)
+		{
+			x--;
+			s = set;
+		}
+		else
+			s++;
+	}
+	x++;
+	*x = '\0';
+	return (x);
+}
+
+int	ft_long(char *p)
+{
+	int		i;
+	char	*x;
+
+	x = p;
+	i = 1;
 	while (*x != '\0')
 	{
-		if (*p == *x)
-			p++;
-		if (*q == *x)
-			q--;
 		x++;
-	}
-	x = p;
-	while (x != q)
-	{
 		i++;
-		x++;
 	}
-	x = ft_calloc(i, sizeof(char));
+	return (i);
+}
+
+char	*ft_strtrim(char const *s1, char const *set)
+{
+	char	*p;
+	char	*x;
+	int		i;
+
+	p = ft_ini(s1, set);
+	ft_fin(s1, set);
+	i = ft_long(p);
+	x = malloc(i * sizeof(char));
 	if (!x)
 		return (NULL);
-	while (i > 0)
+	i = 0;
+	while (*p != '\0')
 	{
-		x[count] = p[count];
-		count++;
-		i--;
+		x[i] = *p;
+		i++;
+		p++;
 	}
+	x[i] = '\0';
 	return (x);
 }
