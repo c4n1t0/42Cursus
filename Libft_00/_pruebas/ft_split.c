@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 19:02:33 by jaromero          #+#    #+#             */
-/*   Updated: 2022/04/27 23:24:58 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/04/27 23:30:32 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,15 +102,15 @@ char	**ft_split(char const *s, char c)
 	count = ft_strlen(str) + 1;
 	printf("La longitud de la cadena es: %d\n", count);
 	ft_reserv(x, str, c);
-	//ft_distr(x, str, c, count);
-	//return (x);
+	ft_distr(x, str, c, count);
+	return (x);
 }
 
-int	main(void)
+/*int	main(void)
 {
 	char const s[] = " hola que tal amigo ";
 	char c = ' ';
 	char **str;
 
 	str = ft_split(s, c);
-}
+}*/
