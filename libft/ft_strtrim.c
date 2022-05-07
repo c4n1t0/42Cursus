@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 23:45:45 by jaromero          #+#    #+#             */
-/*   Updated: 2022/04/27 18:29:21 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/05/05 14:55:40 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	char	*x;
 	int		i;
 
+	if (!s1)
+		return (NULL);
 	p = ft_ini(s1, set);
 	ft_fin(s1, set);
 	i = ft_long(p);

@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 23:14:54 by jaromero          #+#    #+#             */
-/*   Updated: 2022/04/26 23:42:25 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/05/05 14:45:08 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	char	*p;
 	int		i;
 
+	if (!s1 || !s2)
+		return (NULL);
 	lp = ft_strlen(s1) + ft_strlen(s2) + 1;
 	i = 0;
 	p = malloc(lp * sizeof(char));

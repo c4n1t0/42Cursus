@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 22:34:56 by jaromero          #+#    #+#             */
-/*   Updated: 2022/04/26 23:11:26 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/05/05 22:30:07 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*p;
 	char	*q;
-	int		i;
+	size_t	i;
 
 	i = 0;
 	q = (char *)s + start;
@@ -25,7 +25,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		q++;
 		i++;
 	}
-	p = malloc(i * sizeof(char));
+	p = malloc((i + 1) * sizeof(char));
 	if (!p)
 		return (NULL);
 	q = q - i;
@@ -35,5 +35,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		p[i] = q[i];
 		i++;
 	}
+	p[i] = '\0';
 	return (p);
 }
