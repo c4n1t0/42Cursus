@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 21:39:16 by jaromero          #+#    #+#             */
-/*   Updated: 2022/05/08 19:04:51 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/05/08 19:13:36 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 
 	while (*lst)
 	{
-		temp = *lst->next;
+		temp = (*lst)->next;
 		ft_lstdelone(*lst, del);
-		*lst = temp;
+		(*lst) = temp;
 	}
 }

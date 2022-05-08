@@ -1,25 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/07 21:39:16 by jaromero          #+#    #+#             */
-/*   Updated: 2022/05/08 19:04:51 by jaromero         ###   ########.fr       */
+/*   Created: 2022/05/08 19:19:56 by jaromero          #+#    #+#             */
+/*   Updated: 2022/05/08 19:26:41 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*temp;
-
-	while (*lst)
-	{
-		temp = *lst->next;
-		ft_lstdelone(*lst, del);
-		*lst = temp;
-	}
 }
