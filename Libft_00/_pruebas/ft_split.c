@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 19:02:33 by jaromero          #+#    #+#             */
-/*   Updated: 2022/05/07 17:32:47 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/05/09 12:23:27 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,9 @@ static char	*ft_reserv_word(char const *s, int ini, int fin)
 
 static char	**ft_distrb(char const *s, char c, char **p, int word)
 {
-	int	i;
-	int	x;
-	int	o;
+	unsigned long int	i;
+	int					x;
+	int					o;
 
 	i = 0;
 	x = 0;

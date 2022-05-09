@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 13:17:11 by jaromero          #+#    #+#             */
-/*   Updated: 2022/04/26 13:46:36 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/05/09 12:19:43 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	*ft_memmove(void *str1, const void *str2, size_t n)
 {
 	char		*p;
 	const char	*q;
-	int			st;
+	size_t		st;
 
 	p = str1;
 	q = str2;

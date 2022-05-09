@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 10:58:15 by jaromero          #+#    #+#             */
-/*   Updated: 2022/04/26 17:46:36 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/05/09 12:20:33 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*ft_strnstr(const char *s1, const char *s2, size_t len)
 {
 	unsigned int	count;
 
-	while (*s1 != '\0' && len > 0 || *s2 == '\0')
+	while ((*s1 != '\0' && len > 0) || *s2 == '\0')
 	{
 		if (*s1 == *s2 || *s2 == '\0')
 		{
