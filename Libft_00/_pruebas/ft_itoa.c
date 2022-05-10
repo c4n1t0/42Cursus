@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 21:07:18 by jaromero          #+#    #+#             */
-/*   Updated: 2022/04/29 22:23:18 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/05/10 13:39:34 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ char	*ft_itoa(int n)
 	else
 		i = ft_conv(nm, n);
 	p = ft_calloc(i + 1, sizeof(char));
+	if (!p)
+		return (NULL);
 	i--;
 	return (ft_design(nm, i, p));
 }

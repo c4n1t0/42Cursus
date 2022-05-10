@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 10:36:48 by jaromero          #+#    #+#             */
-/*   Updated: 2022/04/26 17:42:25 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/05/11 01:02:29 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	q = (unsigned char *)s2;
 	if (n == 0)
 		return (0);
-	while (*p == *q && n > 0)
+	while (n > 0)
 	{
+		if (*p != *q)
+			return (*p - *q);
 		p++;
 		q++;
 		n--;
@@ -32,5 +34,5 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 		p--;
 		q--;
 	}
-	return (*p - *q);
+	return (0);
 }

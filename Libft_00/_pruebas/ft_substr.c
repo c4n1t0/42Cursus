@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 22:34:56 by jaromero          #+#    #+#             */
-/*   Updated: 2022/05/09 12:22:25 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/05/11 01:21:42 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		q++;
 		i++;
 	}
-	p = malloc(i * sizeof(char));
+	p = malloc((i + 1) * sizeof(char));
 	if (!p)
 		return (NULL);
 	q = q - i;
@@ -35,5 +35,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		p[i] = q[i];
 		i++;
 	}
+	p[i] = '\0';
 	return (p);
 }

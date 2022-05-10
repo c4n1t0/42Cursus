@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 09:30:40 by jaromero          #+#    #+#             */
-/*   Updated: 2022/04/26 17:41:13 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/05/11 00:15:40 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 			n--;
 		}
 	}
+	if (c == '\0')
+		return (p);
 	return (NULL);
 }

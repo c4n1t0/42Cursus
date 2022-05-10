@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 10:43:26 by jaromero          #+#    #+#             */
-/*   Updated: 2022/04/23 23:22:57 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/05/11 00:53:51 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,15 @@
 
 void	*ft_memset(void *str, int c, size_t n)
 {
+	size_t	mem;
 	char	*p;
-	int		mem;
 
-	mem = 0;
 	p = str;
-	while (n > 0)
+	mem = 0;
+	while (n > mem)
 	{
-		if (*p == '\0')
-			mem = 1;
-		*p = c;
-		p++;
-		n--;
+		p[mem] = c;
+		mem++;
 	}
-	if (mem == 1)
-		*p = '\0';
 	return (str);
 }
