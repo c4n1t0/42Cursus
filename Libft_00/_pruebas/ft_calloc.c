@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 12:37:34 by jaromero          #+#    #+#             */
-/*   Updated: 2022/05/10 14:30:58 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/05/11 11:56:20 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 		return (NULL);
 	if (size == __SIZE_MAX__ && nmemb > 1)
 		return (NULL);
-	p = malloc(nmemb * size);
+	p = (void *)malloc(nmemb * size);
 	if (!p)
 		return (NULL);
 	ft_bzero(p, nmemb * size);

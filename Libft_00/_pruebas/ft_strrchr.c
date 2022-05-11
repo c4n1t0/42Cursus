@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 00:51:55 by jaromero          #+#    #+#             */
-/*   Updated: 2022/04/26 17:47:52 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/05/11 13:19:25 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ char	*ft_strrchr(const char *s, int c)
 		count++;
 		s++;
 	}
-	if (*s == c)
+	if (*s == (char)c)
 		return ((char *)s);
 	while (count > 0)
 	{
-		if (*s == c)
+		if (*s == (char)c)
 			return ((char *)s);
 		else
 		{
