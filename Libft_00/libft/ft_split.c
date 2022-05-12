@@ -6,34 +6,35 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 19:02:33 by jaromero          #+#    #+#             */
-/*   Updated: 2022/05/12 12:23:17 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/05/13 00:25:41 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_count_word(char *s, char c)
+static int	ft_count_word(char *s, char c, int len)
 {
 	int	i;
 	int	word;
 
 	i = 0;
 	word = 0;
-	while (s[i] != '\0')
+	while (len > 0)
 	{
-		if (s[i] == c)
+		while (s[i] == c)
+			i++;
+		if (s[i] != c || s[i] == '\0')
 		{
-			i++;
-			if (s[i] != c)
+			word++;
+			if (s[i] == '\0')
+			{
 				word++;
+				return (word);
+			}
 		}
-		else
-			i++;
+		len--;
+		i++;
 	}
-	word++;
-	word++;
-	if (s[i] == '\0' && word == 1)
-		word++;
 	return (word);
 }
 
@@ -67,7 +68,7 @@ static char	**ft_distrb(char const *s, char c, char **p, int word)
 	o = i;
 	while (i <= (ft_strlen(s) + 1))
 	{
-		if (s[i] == c || (i == (ft_strlen(s) + 1) && word == 2 && i - o > 1))
+		if (s[i] == c || (i == (ft_strlen(s) + 1) && i - o > 1))
 		{
 			p[x] = ft_reserv_word(s, o, i);
 			x++;
@@ -86,8 +87,10 @@ char	**ft_split(char const *s, char c)
 {
 	char	**p;
 	int		word;
+	int		len;
 
-	word = ft_count_word((char *)s, c);
+	len = ft_strlen(s) + 1;
+	word = ft_count_word((char *)s, c, len);
 	if (!s)
 		return (NULL);
 	p = malloc(word * sizeof(char *));
