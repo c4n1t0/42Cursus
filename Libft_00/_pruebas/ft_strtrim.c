@@ -6,91 +6,28 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 23:45:45 by jaromero          #+#    #+#             */
-/*   Updated: 2022/04/27 18:29:21 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/05/12 14:22:32 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_ini(char const *s1, char const *set)
-{
-	char	*s;
-	char	*n;
-
-	s = (char *)set;
-	n = (char *)s1;
-	while (*s != '\0')
-	{
-		if (*n == *s)
-		{
-			n++;
-			s = (char *)set;
-		}
-		else
-			s++;
-	}
-	return (n);
-}
-
-void	*ft_fin(char const *s1, char const *set)
-{
-	char	*s;
-	char	*x;
-
-	x = (char *)s1;
-	s = (char *)set;
-	while (*x != '\0')
-		x++;
-	x--;
-	while (*s != '\0')
-	{
-		if (*x == *s)
-		{
-			x--;
-			s = (char *)set;
-		}
-		else
-			s++;
-	}
-	x++;
-	*x = '\0';
-	return (x);
-}
-
-int	ft_long(char *p)
-{
-	int		i;
-	char	*x;
-
-	x = p;
-	i = 1;
-	while (*x != '\0')
-	{
-		x++;
-		i++;
-	}
-	return (i);
-}
-
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*p;
-	char	*x;
-	int		i;
+	size_t	x;
+	size_t	len;
 
-	p = ft_ini(s1, set);
-	ft_fin(s1, set);
-	i = ft_long(p);
-	x = malloc(i * sizeof(char));
-	if (!x)
+	len = ft_strlen(s1);
+	x = 0;
+	if (!s1)
 		return (NULL);
-	i = 0;
-	while (*p != '\0')
-	{
-		x[i] = *p;
-		i++;
-		p++;
-	}
-	x[i] = '\0';
-	return (x);
+	while (x < len && ft_strchr(set, s1[x]))
+		x++;
+	while (len > x && ft_strchr(set, s1[len - 1]))
+		len--;
+	p = ft_substr(&s1[x], 0, len - x);
+	if (!p)
+		return (NULL);
+	return (p);
 }

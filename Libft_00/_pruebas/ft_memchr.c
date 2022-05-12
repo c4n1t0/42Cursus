@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 09:30:40 by jaromero          #+#    #+#             */
-/*   Updated: 2022/05/11 13:52:23 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/05/12 10:28:07 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	char	*p;
+	unsigned char	*p;
 
-	p = (char *)s;
-	while (*p != '\0' && n > 0)
+	p = (unsigned char *)s;
+	while (n > 0)
 	{
-		if (*p == c)
+		if (*p == (unsigned char)c)
 			return (p);
 		else
 		{
@@ -27,7 +27,5 @@ void	*ft_memchr(const void *s, int c, size_t n)
 			n--;
 		}
 	}
-	if (c == '\0')
-		return (p);
 	return (NULL);
 }
