@@ -6,13 +6,13 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 21:07:18 by jaromero          #+#    #+#             */
-/*   Updated: 2022/05/10 13:39:34 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/05/13 17:40:46 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_design(char *nm, int i, char *p)
+static char	*ft_design(char *nm, int i, char *p)
 {
 	int	o;
 
@@ -35,7 +35,7 @@ char	*ft_design(char *nm, int i, char *p)
 	return (p);
 }
 
-int	ft_conv(char *nm, int n)
+static int	ft_conv(char *nm, int n)
 {
 	int	a;
 	int	i;
