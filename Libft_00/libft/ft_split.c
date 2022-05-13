@@ -6,95 +6,64 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 19:02:33 by jaromero          #+#    #+#             */
-/*   Updated: 2022/05/13 00:25:41 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/05/13 17:07:08 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_count_word(char *s, char c, int len)
+static char	**ft_distrib(char *tmp, unsigned int len, int word)
 {
-	int	i;
-	int	word;
+	char			**aux;
+	unsigned int	i;
+	unsigned int	j;
 
+	aux = (char **)malloc(sizeof(char *) * (word + 1));
+	if (aux == 0)
+		return (0);
 	i = 0;
-	word = 0;
-	while (len > 0)
+	j = 0;
+	if (tmp[i] != '\0')
 	{
-		while (s[i] == c)
-			i++;
-		if (s[i] != c || s[i] == '\0')
-		{
-			word++;
-			if (s[i] == '\0')
-			{
-				word++;
-				return (word);
-			}
-		}
-		len--;
-		i++;
+		aux[j] = ft_strdup(&tmp[i]);
+		j++;
 	}
-	return (word);
-}
-
-static char	*ft_reserv_word(char const *s, int ini, int fin)
-{
-	char	*word;
-	int		i;
-
-	i = 0;
-	word = malloc(((fin - ini) + 1) * sizeof(char));
-	while (ini < fin)
+	i++;
+	while (i < len)
 	{
-		word[i] = s[ini];
-		i++;
-		ini++;
-	}
-	word[i] = '\0';
-	return (word);
-}
-
-static char	**ft_distrb(char const *s, char c, char **p, int word)
-{
-	unsigned long int	i;
-	int					x;
-	int					o;
-
-	i = 0;
-	x = 0;
-	while (s[i] == c)
-		i++;
-	o = i;
-	while (i <= (ft_strlen(s) + 1))
-	{
-		if (s[i] == c || (i == (ft_strlen(s) + 1) && i - o > 1))
+		if (tmp[i] != '\0' && tmp[i - 1] == '\0')
 		{
-			p[x] = ft_reserv_word(s, o, i);
-			x++;
-			word--;
-			while (s[i] == c)
-				i++;
-			o = i;
+			aux[j++] = ft_strdup(&tmp[i]);
 		}
 		i++;
 	}
-	p[x] = 0;
-	return (p);
+	aux[j] = 0;
+	return (aux);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**p;
-	int		word;
-	int		len;
+	unsigned int	len;
+	unsigned int	i;
+	int				word;
+	char			*tmp;
+	char			**aux;
 
-	len = ft_strlen(s) + 1;
-	word = ft_count_word((char *)s, c, len);
-	if (!s)
-		return (NULL);
-	p = malloc(word * sizeof(char *));
-	if (!p)
-		return (NULL);
-	return (ft_distrb(s, c, p, word));
+	len = ft_strlen(s);
+	tmp = ft_strdup(s);
+	if (tmp == 0)
+		return (0);
+	word = 0;
+	i = 0;
+	while (i < len)
+	{
+		if (tmp[i] == c)
+			tmp[i] = '\0';
+		else if (i == 0 || tmp[i - 1] == '\0')
+			word++;
+		i++;
+	}
+	aux = ft_distrib(tmp, len, word);
+	free(tmp);
+	return (aux);
 }
