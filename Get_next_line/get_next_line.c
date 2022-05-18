@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 11:45:16 by jaromero          #+#    #+#             */
-/*   Updated: 2022/05/18 13:25:19 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/05/19 00:51:21 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,26 +20,22 @@ char	*get_next_line(int fd)
 	char		*buff;
 	static char	buffer[BUFFER_SIZE];
 	ssize_t		rd;
+	char		*str;
 
 	if (!buff)
 		buff = buffer;
 	while (*buff != '\n')
 	{
-		if (*buff == '\0')
+		if (*buff != '\0')
 		{
-			rd = read(fd, buffer, BUFFER_SIZE);
-			if (!rd)
-				return (NULL);
-			buff = buffer;
+			write(1, buff, 1);
+			buff++;
 		}
-		write(1, buff, 1);
-		buff++;
-		if (ft_strlen(buff) < 1)
+		if (ft_strlen(buff) < 1 || *buff == '\0')
 		{
-			rd = read(fd, buffer, BUFFER_SIZE);
-			if (!rd)
-				return (NULL);
 			buff = buffer;
+			ft_read_fd(fd, buff);
+			str = ft_calloc((ft_strlen(buff) + 1), sizeof(char));
 		}
 	}
 	if (*buff == '\n')
