@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 11:45:16 by jaromero          #+#    #+#             */
-/*   Updated: 2022/05/17 14:00:32 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/05/18 13:25:19 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,33 +17,34 @@
 
 char	*get_next_line(int fd)
 {
-	static char	*buff;
-	static int	d;
+	char		*buff;
 	static char	buffer[BUFFER_SIZE];
 	ssize_t		rd;
-	int			count;
 
-	d = 0;
-	count = 0;
-	buff = buffer;
-	printf("buff esta apuntando a: %s\n", buff);
-	//if (*buff == '\0')
-	rd = read(fd, buffer, BUFFER_SIZE);
-	//write(1, "rd del read: &rd\n", 15);
-	d = 1;
 	if (!buff)
-		return (NULL);
-	while (*buff != '\n' && count < rd)
+		buff = buffer;
+	while (*buff != '\n')
 	{
+		if (*buff == '\0')
+		{
+			rd = read(fd, buffer, BUFFER_SIZE);
+			if (!rd)
+				return (NULL);
+			buff = buffer;
+		}
 		write(1, buff, 1);
 		buff++;
-		count++;
+		if (ft_strlen(buff) < 1)
+		{
+			rd = read(fd, buffer, BUFFER_SIZE);
+			if (!rd)
+				return (NULL);
+			buff = buffer;
+		}
 	}
-	/*if (*buff == '\n')
-	{
+	if (*buff == '\n')
 		write(1, "\n", 1);
-		//count++;
-	}*/
+	buff++;
 	return (buff);
 }
 
@@ -56,9 +57,11 @@ int	main(void)
 	count = 0;
 	fd1 = 0;
 	fd1 = open("./numbers.dict", O_RDONLY);
-	while (count < 10)
+	while (count < 5)
 	{
 		ptrbuff = get_next_line(fd1);
+		if (!ptrbuff)
+			return (0);
 		count++;
 	}
 	close(fd1);

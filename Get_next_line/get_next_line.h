@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 19:40:14 by jaromero          #+#    #+#             */
-/*   Updated: 2022/05/16 00:23:18 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/05/18 09:59:57 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@
 # include <unistd.h>
 
 char	*get_next_line(int fd);
+size_t	ft_strlen(const char *s);
 
 #endif
