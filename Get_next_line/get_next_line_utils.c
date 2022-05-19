@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 11:47:39 by jaromero          #+#    #+#             */
-/*   Updated: 2022/05/19 00:53:39 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/05/19 12:33:50 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,20 @@ size_t	ft_strlen(const char *s)
 	{
 		count++;
 		s++;
+	}
+	return (count);
+}
+
+size_t	ft_ptrlen(const char *s, char *s1)
+{
+	size_t	count;
+
+	count = 0;
+	while (s != s1)
+	{
+		count++;
+		s++;
+		s1++;
 	}
 	return (count);
 }
@@ -89,4 +103,37 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	}
 	p[i] = '\0';
 	return (p);
+}
+
+char	*ft_strchr(const char *s, int c)
+{
+	while (*s != '\0')
+	{
+		if (*s == (char)c)
+			return ((char *)s);
+		else
+			s++;
+	}
+	if (*s == (char)c)
+		return ((char *)s);
+	return (NULL);
+}
+
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+{
+	size_t	count;
+
+	count = ft_strlen(src);
+	if (size > 0)
+	{
+		while (size - 1 > 0 && *src != '\0')
+		{
+			*dst = *src;
+			dst++;
+			src++;
+			size--;
+		}
+		*dst = '\0';
+	}
+	return (count);
 }
