@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 11:45:16 by jaromero          #+#    #+#             */
-/*   Updated: 2022/05/20 13:42:14 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/05/22 21:44:49 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,24 +32,20 @@ char	*ft_save(char *str, char *p, int i)
 
 char	*get_next_line(int fd)
 {
-	char		*buff;
+	static char	*buff;
 	static char	buffer[BUFFER_SIZE];
 	char		*str;
 	char		*p;
 	int			i;
-	char		*ptr;
 	int			j;
 
 	i = 0;
 	if (!buff)
-		buff = str;
-	//if (*buff != '\0')
-	//	str = ft_strjoin(str, buff);
+		buff = buffer;
 	while (*buff != '\n')
 	{
 		if (*buff != '\0')
 		{
-			//write(1, buff, 1);
 			buff++;
 			i++;
 		}
@@ -58,17 +54,13 @@ char	*get_next_line(int fd)
 			buff = buffer;
 			ft_read_fd(fd, buff);
 			str = ft_strjoin(str, buff);
-			//p = ft_strchr(str, '\n');
 		}
 	}
-	//printf("str = \n%s\n", str);
 	if (*buff == '\n')
 		i++;
+	buff++;
 	p = ft_calloc((i + 1), sizeof(char));
-	//printf("str = \n%s\n", str);
-	//ptr = ft_save(str, p, i);
 	j = 0;
-	//printf("contador %d\n", i);
 	while (i > 0)
 	{
 		p[j] = str[j];
@@ -76,15 +68,8 @@ char	*get_next_line(int fd)
 			j++;
 		i--;
 	}
-	//str[j] = '\n';
-	if (ft_strlen(buff) > 1)
-	{
-		free(str);
-		str = ft_strjoin(str, buff);
-	}
-	else
-		free(str);
-	buff++;
+	free(str);
+	str = ft_strjoin(str, buff);
 	return (p);
 }
 
@@ -97,7 +82,7 @@ int	main(void)
 	count = 0;
 	fd1 = 0;
 	fd1 = open("./numbers.dict", O_RDONLY);
-	while (count < 10)
+	while (count < 5)
 	{
 		ptrbuff = get_next_line(fd1);
 		if (!ptrbuff)
