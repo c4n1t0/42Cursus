@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 11:45:16 by jaromero          #+#    #+#             */
-/*   Updated: 2022/05/23 21:10:30 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/05/24 17:58:49 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,63 +15,45 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-char	*ft_save(char *str, char *p, int i)
-{
-	int	j;
-
-	j = 0;
-	while (i > 0)
-	{
-		p[j] = str[j];
-		j++;
-		i--;
-	}
-	p[j] = '\0';
-	return (p);
-}
-
 char	*get_next_line(int fd)
 {
 	static char	*buff;
-	static char	buffer[10];
+	char		buffer[BUFFER_SIZE];
 	char		*str;
-	char		*p;
+	char		*ptr;
 	int			i;
 	int			j;
 
 	i = 0;
-	if (!buff)
-		buff = buffer;
-	while (*buff != '\n')
-	{
-		if (*buff != '\0')
-		{
-			buff++;
-			i++;
-		}
-		if (ft_strlen(buff) < 1 || *buff == '\0')
-		{
-			buff = ft_read_fd(fd, buff);
-			if (!buff)
-				return (NULL);
-			str = ft_strjoin(str, buff);
-		}
-	}
-	if (*buff == '\n')
-		i++;
-	buff++;
-	p = ft_calloc((i + 1), sizeof(char));
 	j = 0;
+	while (!ft_strchr(str, '\n'))
+	{
+		buff = ft_read_fd(fd, buffer);
+		if (!buff)
+			return (NULL);
+		str = ft_strjoin(str, buff);
+	}
+	while (str[i] != '\n')
+		i++;
+	i++;
+	while (*buff != '\n')
+		buff++;
+	buff++;
+	ptr = ft_calloc((i + 1), sizeof(char));
+	if (!ptr)
+		return (NULL);
 	while (i > 0)
 	{
-		p[j] = str[j];
-		if (str[j] != '\0')
-			j++;
+		ptr[j] = str[j];
+		j++;
 		i--;
 	}
 	free(str);
 	str = ft_strjoin(str, buff);
-	return (p);
+	//printf("ptr= %s\n", ptr);
+	//printf("buff= %s\n", buff);
+	//printf("str= %s-\n", str);
+	return (ptr);
 }
 
 int	main(void)
