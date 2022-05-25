@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 11:45:16 by jaromero          #+#    #+#             */
-/*   Updated: 2022/05/25 14:11:52 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/05/25 14:41:03 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,68 +15,43 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-char	*ft_save(char *str, char *p, int i)
+char	*ft_read_fd(int fd, char *buff)
 {
-	int	j;
+	ssize_t	rd;
 
-	j = 0;
-	while (i > 0)
-	{
-		p[j] = str[j];
-		j++;
-		i--;
-	}
-	p[j] = '\0';
-	return (p);
+	rd = read(fd, buff, BUFFER_SIZE);
+	if (!rd)
+		return (NULL);
+	return (buff);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*buff;
-	static char	buffer[BUFFER_SIZE];
-	char		*str;
-	char		*p;
-	int			i;
-	int			j;
+	char		*buff;
+	char		buffer[BUFFER_SIZE];
+	static char	*str;
+	char		*ptr;
 
+	//buff = NULL;
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	i = 0;
-	if (!buff)
-		buff = buffer;
-	while (*buff != '\n')
+	if (str)
+		buff = ft_strchr(str, '\n');
+	while (!str)
 	{
-		if (*buff != '\0')
-		{
-			buff++;
-			i++;
-		}
-		if (ft_strlen(buff) < 1 || *buff == '\0')
-		{
-			buff = ft_read_fd(fd, buff);
-			if (!buff)
-				return (NULL);
-			str = ft_strjoin(str, buff);
-		}
+		buff = ft_read_fd(fd, buffer);
+		if (!buff)
+			return (NULL);
+		str = ft_strjoin(str, buff);
+		buff = ft_strchr(str, '\n');
 	}
-	if (*buff == '\n')
-		i++;
-	buff++;
-	p = ft_calloc((i + 1), sizeof(char));
-	j = 0;
-	while (i > 0)
-	{
-		p[j] = str[j];
-		if (str[j] != '\0')
-			j++;
-		i--;
-	}
-	free(str);
-	str = ft_strjoin(str, buff);
-	return (p);
+	//printf("ptr= %s\n", ptr);
+	printf("buff= %s\n", buff);
+	printf("str= %s-\n", str);
+	return (0);
 }
 
-/*int	main(void)
+int	main(void)
 {
 	int fd1;
 	char *ptrbuff;
@@ -95,4 +70,4 @@ char	*get_next_line(int fd)
 	}
 	close(fd1);
 	return (0);
-}*/
+}
