@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 11:45:16 by jaromero          #+#    #+#             */
-/*   Updated: 2022/05/24 17:58:49 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/05/25 19:40:59 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 
 char	*get_next_line(int fd)
 {
-	static char	*buff;
+	char		*buff;
 	char		buffer[BUFFER_SIZE];
-	char		*str;
+	static char	*str;
 	char		*ptr;
 	int			i;
 	int			j;

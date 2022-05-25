@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 11:45:16 by jaromero          #+#    #+#             */
-/*   Updated: 2022/05/23 21:10:30 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/05/25 19:56:33 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*ft_save(char *str, char *p, int i)
 char	*get_next_line(int fd)
 {
 	static char	*buff;
-	static char	buffer[10];
+	static char	buffer[BUFFER_SIZE];
 	char		*str;
 	char		*p;
 	int			i;
@@ -74,7 +74,7 @@ char	*get_next_line(int fd)
 	return (p);
 }
 
-int	main(void)
+/*int	main(void)
 {
 	int fd1;
 	char *ptrbuff;
@@ -93,4 +93,4 @@ int	main(void)
 	}
 	close(fd1);
 	return (0);
-}
+}*/
