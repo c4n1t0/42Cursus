@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 11:45:16 by jaromero          #+#    #+#             */
-/*   Updated: 2022/05/25 19:40:59 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/05/26 23:46:35 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,38 +21,48 @@ char	*get_next_line(int fd)
 	char		buffer[BUFFER_SIZE];
 	static char	*str;
 	char		*ptr;
+	size_t		lp;
 	int			i;
 	int			j;
 
-	i = 0;
 	j = 0;
+	i = 0;
+	if (!str)
+	{
+		lp = read(fd, buffer, BUFFER_SIZE);
+		//printf("buff = %s\n", buffer);
+		str = ft_calloc(sizeof(char), (lp + 1));
+		while (lp > 0)
+		{
+			str[i] = buffer[i];
+			lp--;
+			i++;
+		}
+		buff = ft_strchr(str, '\n');
+		//printf("str = %s\n", str);
+		//printf("buff = %s\n", buff);
+	}
 	while (!ft_strchr(str, '\n'))
 	{
-		buff = ft_read_fd(fd, buffer);
-		if (!buff)
-			return (NULL);
-		str = ft_strjoin(str, buff);
+		lp = read(fd, buffer, BUFFER_SIZE);
+		str = ft_strjoin(str, buffer);
+		printf("str = %s\n", str);
 	}
+	i = 0;
+	buff = str;
 	while (str[i] != '\n')
 		i++;
 	i++;
-	while (*buff != '\n')
-		buff++;
-	buff++;
-	ptr = ft_calloc((i + 1), sizeof(char));
-	if (!ptr)
-		return (NULL);
+	ptr = malloc(sizeof(char) * (i + 1));
+	j = 0;
 	while (i > 0)
 	{
 		ptr[j] = str[j];
-		j++;
 		i--;
+		j++;
 	}
-	free(str);
-	str = ft_strjoin(str, buff);
-	//printf("ptr= %s\n", ptr);
-	//printf("buff= %s\n", buff);
-	//printf("str= %s-\n", str);
+	printf("ptr = %s\n", ptr);
+	printf("buff = %s\n", buff);
 	return (ptr);
 }
 
@@ -70,7 +80,7 @@ int	main(void)
 		ptrbuff = get_next_line(fd1);
 		if (!ptrbuff)
 			return (0);
-		printf("%s", ptrbuff);
+		//printf("%s", ptrbuff);
 		count++;
 	}
 	close(fd1);
