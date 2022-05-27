@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 11:45:16 by jaromero          #+#    #+#             */
-/*   Updated: 2022/05/26 10:39:56 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/05/27 17:30:42 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ char	*get_next_line(int fd)
 	return (p);
 }
 
-int	main(void)
+/*int	main(void)
 {
 	int fd1;
 	char *ptrbuff;
@@ -95,4 +95,4 @@ int	main(void)
 	}
 	close(fd1);
 	return (0);
-}
+}*/
