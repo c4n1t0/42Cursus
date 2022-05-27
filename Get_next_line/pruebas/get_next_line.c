@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 11:45:16 by jaromero          #+#    #+#             */
-/*   Updated: 2022/05/27 17:50:42 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/05/27 19:17:34 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,17 @@ char	*get_next_line(int fd)
 	j = 0;
 	i = 0;
 	lp = 1;
-	buffer = ft_calloc(sizeof(char), BUFFER_SIZE);
-	if (!buffer)
-		return (NULL);
 	if (!str)
 		str = ft_calloc(1, 1);
+	buffer = ft_calloc(sizeof(char), BUFFER_SIZE + 1);
+	if (!buffer)
+		return (NULL);
 	while (!ft_strchr(str, '\n') && lp != 0)
 	{
 		lp = read(fd, buffer, BUFFER_SIZE);
 		if (lp == -1)
 		{
+			free(str);
 			free(buffer);
 			return (NULL);
 		}
@@ -48,16 +49,22 @@ char	*get_next_line(int fd)
 		str = ft_strjoin(str, buffer);
 	}
 	free(buffer);
+	//if (lp == 0)
+	//	return (free(str), NULL);
 	if (!str)
 		return (NULL);
 	i = 0;
+	// contamos longitud
 	while (str[i] != '\n' && str[i] != '\0')
 		i++;
 	if (str[i] == '\n')
 		i++;
-	ptr = malloc(sizeof(char) * (i + 1));
+	// reservamos ptr para devolver
+	ptr = ft_calloc(sizeof(char), (i + 1));
 	if (!ptr)
 		return (NULL);
+	// copiamos en ptr
+	//printf("str = %s\n", str);
 	j = 0;
 	while (i > 0)
 	{
@@ -65,7 +72,17 @@ char	*get_next_line(int fd)
 		i--;
 		j++;
 	}
+	/*if (ptr[j] == '\n')
+		ptr[j + 1] = '\0';
+	else
+		ptr[j + 1] = '\0';*/
+	// reservo en str static lo que queda dentro
 	buff = ft_strchr(str, '\n');
+	if (!buff)
+	{
+		free(str);
+		return (NULL);
+	}
 	buff++;
 	//free(str);
 	str = malloc(sizeof(char) * (ft_strlen(buff) + 1));
@@ -80,7 +97,7 @@ char	*get_next_line(int fd)
 	return (ptr);
 }
 
-/*int	main(void)
+int	main(void)
 {
 	int fd1;
 	char *ptrbuff;
@@ -99,4 +116,4 @@ char	*get_next_line(int fd)
 	}
 	close(fd1);
 	return (0);
-}*/
+}
