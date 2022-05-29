@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 11:47:39 by jaromero          #+#    #+#             */
-/*   Updated: 2022/05/26 10:01:57 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/05/29 17:02:31 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,30 +25,6 @@ size_t	ft_strlen(const char *s)
 	return (count);
 }
 
-size_t	ft_ptrlen(const char *s, char *s1)
-{
-	size_t	count;
-
-	count = 0;
-	while (s != s1)
-	{
-		count++;
-		s++;
-		s1++;
-	}
-	return (count);
-}
-
-char	*ft_read_fd(int fd, char *buff)
-{
-	ssize_t	rd;
-
-	rd = read(fd, buff, BUFFER_SIZE);
-	if (!rd)
-		return (NULL);
-	return (buff);
-}
-
 void	*ft_calloc(size_t nmemb, size_t size)
 {
 	void	*p;
@@ -60,7 +36,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 		return (NULL);
 	p = (void *)malloc(nmemb * size);
 	if (!p)
-		return (NULL);
+		return (free(p), NULL);
 	ft_bzero(p, nmemb * size);
 	return (p);
 }
@@ -78,12 +54,14 @@ void	ft_bzero(void *s, size_t n)
 	}
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	int		lp;
 	char	*p;
 	int		i;
 
+	if (!s1)
+		s1 = ft_calloc(1, 1);
 	lp = ft_strlen(s1) + ft_strlen(s2) + 1;
 	i = 0;
 	p = malloc(lp * sizeof(char));
@@ -117,23 +95,4 @@ char	*ft_strchr(const char *s, int c)
 	if (*s == (char)c)
 		return ((char *)s);
 	return (NULL);
-}
-
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
-{
-	size_t	count;
-
-	count = ft_strlen(src);
-	if (size > 0)
-	{
-		while (size - 1 > 0 && *src != '\0')
-		{
-			*dst = *src;
-			dst++;
-			src++;
-			size--;
-		}
-		*dst = '\0';
-	}
-	return (count);
 }

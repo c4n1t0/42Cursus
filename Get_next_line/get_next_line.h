@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/27 17:43:34 by jaromero          #+#    #+#             */
-/*   Updated: 2022/05/27 17:52:56 by jaromero         ###   ########.fr       */
+/*   Created: 2022/05/15 19:40:14 by jaromero          #+#    #+#             */
+/*   Updated: 2022/05/27 17:55:40 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,5 @@ char	*ft_strjoin(char *s1, char *s2);
 char	*ft_strchr(const char *s, int c);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 size_t	ft_ptrlen(const char *s, char *s1);
+void	ft_bzero(void *s, size_t n);
 #endif
