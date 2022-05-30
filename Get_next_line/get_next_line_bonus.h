@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 19:40:14 by jaromero          #+#    #+#             */
-/*   Updated: 2022/05/29 22:00:22 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/05/30 10:30:50 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
-# include <sys/types.h>
-# include <sys/uio.h>
 # include <unistd.h>
 
 char	*get_next_line(int fd);
