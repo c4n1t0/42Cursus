@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 16:13:13 by jaromero          #+#    #+#             */
-/*   Updated: 2022/06/01 20:58:36 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/06/02 21:56:19 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	ft_printf(char const *ptr, ...)
 {
 	int		i;
+	int		x;
 	char	*p;
 	va_list	args;
 
@@ -35,13 +36,19 @@ int	ft_printf(char const *ptr, ...)
 			else if (*p == 'c')
 				i = ft_putchar(va_arg(args, int), i);
 			else if (*p == 'x')
-				i = ft_calc_hex_minus(va_arg(args, unsigned long long), i);
+			{
+				x = 0;
+				i = ft_calc_hex(va_arg(args, unsigned int), i, x);
+			}
 			else if (*p == 'X')
-				i = ft_calc_hex_mayus(va_arg(args, unsigned long long), i);
+			{
+				x = 1;
+				i = ft_calc_hex(va_arg(args, unsigned int), i, x);
+			}
 			else if (*p == 'p')
 			{
 				write(1, "0x", 2);
-				i = ft_calc_hex_minus(va_arg(args, unsigned long long), i) + 2;
+				i = ft_calc_hex_void(va_arg(args, unsigned long long), i) + 2;
 			}
 			else if (*p == '%')
 			{

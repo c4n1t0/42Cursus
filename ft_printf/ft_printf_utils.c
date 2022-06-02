@@ -6,13 +6,13 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 13:02:36 by jaromero          #+#    #+#             */
-/*   Updated: 2022/06/01 21:00:56 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/06/02 21:58:15 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_hex_mayus(unsigned long long num)
+void	ft_hex_mayus(unsigned int num)
 {
 	if (num == 10)
 		write(1, "A", 1);
@@ -33,7 +33,7 @@ void	ft_hex_mayus(unsigned long long num)
 	}
 }
 
-void	ft_hex_minus(unsigned long long num)
+void	ft_hex_minus(unsigned int num)
 {
 	if (num == 10)
 		write(1, "a", 1);
@@ -54,27 +54,33 @@ void	ft_hex_minus(unsigned long long num)
 	}
 }
 
-int	ft_calc_hex_mayus(unsigned long long num, int i)
+int	ft_calc_hex(unsigned int num, int i, int x)
 {
 	int	d;
 
 	if (num < 16)
 	{
-		ft_hex_mayus(num);
+		if (x == 0)
+			ft_hex_minus(num);
+		else if (x == 1)
+			ft_hex_mayus(num);
 		i++;
 	}
 	else if (num >= 16)
 	{
 		d = num % 16;
 		num = num / 16;
-		i = ft_calc_hex_mayus(num, i);
-		ft_hex_mayus(d);
+		i = ft_calc_hex(num, i, x);
+		if (x == 0)
+			ft_hex_minus(d);
+		else if (x == 1)
+			ft_hex_mayus(d);
 		i++;
 	}
 	return (i);
 }
 
-int	ft_calc_hex_minus(unsigned long long num, int i)
+int	ft_calc_hex_void(unsigned long long num, int i)
 {
 	int	d;
 
@@ -87,7 +93,7 @@ int	ft_calc_hex_minus(unsigned long long num, int i)
 	{
 		d = num % 16;
 		num = num / 16;
-		i = ft_calc_hex_minus(num, i);
+		i = ft_calc_hex_void(num, i);
 		ft_hex_minus(d);
 		i++;
 	}
