@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 13:13:10 by jaromero          #+#    #+#             */
-/*   Updated: 2022/06/02 21:56:49 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/06/03 17:19:06 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ int		ft_putchar(char c, int i);
 int		ft_unsigned_putnbr(unsigned int n, int i);
 int		ft_calc_hex_void(unsigned long long num, int i);
 void	ft_hex_minus(unsigned int num);
-int		ft_calc_hex(unsigned int num, int i, int x);
+int		ft_calc_hex(unsigned int num, int i, char *p);
 void	ft_hex_mayus(unsigned int num);
+int		ft_num_neg(int n);
+int		ft_conditions(char *p, int i, va_list args);
 
 #endif

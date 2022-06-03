@@ -6,99 +6,11 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 13:02:36 by jaromero          #+#    #+#             */
-/*   Updated: 2022/06/02 21:58:15 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/06/03 17:50:03 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-void	ft_hex_mayus(unsigned int num)
-{
-	if (num == 10)
-		write(1, "A", 1);
-	else if (num == 11)
-		write(1, "B", 1);
-	else if (num == 12)
-		write(1, "C", 1);
-	else if (num == 13)
-		write(1, "D", 1);
-	else if (num == 14)
-		write(1, "E", 1);
-	else if (num == 15)
-		write(1, "F", 1);
-	else if (num < 10)
-	{
-		num = num + '0';
-		write(1, &num, 1);
-	}
-}
-
-void	ft_hex_minus(unsigned int num)
-{
-	if (num == 10)
-		write(1, "a", 1);
-	else if (num == 11)
-		write(1, "b", 1);
-	else if (num == 12)
-		write(1, "c", 1);
-	else if (num == 13)
-		write(1, "d", 1);
-	else if (num == 14)
-		write(1, "e", 1);
-	else if (num == 15)
-		write(1, "f", 1);
-	else if (num < 10)
-	{
-		num = num + '0';
-		write(1, &num, 1);
-	}
-}
-
-int	ft_calc_hex(unsigned int num, int i, int x)
-{
-	int	d;
-
-	if (num < 16)
-	{
-		if (x == 0)
-			ft_hex_minus(num);
-		else if (x == 1)
-			ft_hex_mayus(num);
-		i++;
-	}
-	else if (num >= 16)
-	{
-		d = num % 16;
-		num = num / 16;
-		i = ft_calc_hex(num, i, x);
-		if (x == 0)
-			ft_hex_minus(d);
-		else if (x == 1)
-			ft_hex_mayus(d);
-		i++;
-	}
-	return (i);
-}
-
-int	ft_calc_hex_void(unsigned long long num, int i)
-{
-	int	d;
-
-	if (num < 16)
-	{
-		ft_hex_minus(num);
-		i++;
-	}
-	else if (num >= 16)
-	{
-		d = num % 16;
-		num = num / 16;
-		i = ft_calc_hex_void(num, i);
-		ft_hex_minus(d);
-		i++;
-	}
-	return (i);
-}
 
 int	ft_unsigned_putnbr(unsigned int n, int i)
 {
@@ -124,21 +36,24 @@ int	ft_unsigned_putnbr(unsigned int n, int i)
 	return (i);
 }
 
+int	ft_num_neg(int n)
+{
+	n = n * -1;
+	write(1, "-", 1);
+	return (n);
+}
+
 int	ft_putnbr(int n, int i)
 {
 	int	d;
 
 	if (n == -2147483648)
-	{
-		write(1, "-2147483648", 11);
-		return (i + 11);
-	}
+		return (write(1, "-2147483648", 11), (i + 11));
 	else
 	{
 		if (n < 0)
 		{
-			n = n * -1;
-			write(1, "-", 1);
+			n = ft_num_neg(n);
 			i++;
 		}
 		if (n < 10)
@@ -149,12 +64,9 @@ int	ft_putnbr(int n, int i)
 		}
 		else if (n > 9)
 		{
-			d = n % 10;
-			n = n / 10;
-			i = ft_putnbr(n, i);
-			d = d + '0';
+			d = n % 10 + '0';
+			i = (ft_putnbr((n = n / 10), i)) + 1;
 			write(1, &d, 1);
-			i++;
 		}
 	}
 	return (i);
@@ -186,8 +98,6 @@ int	ft_putstr(char *s, int j)
 int	ft_putchar(char c, int i)
 {
 	write(1, &c, 1);
-	if ((c >= 32 && c < 127) || c == '\n' || c == '\t' || c == '\v' || c == '\f'
-		|| c == '\r' || c == '\0')
-		i++;
+	i++;
 	return (i);
 }

@@ -1,6 +1,8 @@
 NAME	= libftprintf.a
 
-SOURCES	= ft_printf.c ft_printf_utils.c
+LIBFT	= libft
+
+SOURCES	= ft_printf.c ft_printf_utils.c hexadecimales.c
 
 OBJECTS	= $(SOURCES:.c=.o)
 
@@ -11,6 +13,9 @@ CFLAGS	= -Wall -Wextra -Werror
 all:	$(NAME)
 
 $(NAME):	$(OBJECTS)
+			@make -C $(LIBFT)
+			@cp libft/libft.a .
+			@mv libft.a $(NAME)
 			$(AR) -r $@ $?
 
 %.o: %.c
