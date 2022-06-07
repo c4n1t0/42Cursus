@@ -1,0 +1,16 @@
+{
+	"manifest_version": 1,
+	"name": "IOT League",
+	"lider": "jaromero",
+	"co-lider": "bjimenez",
+	"icon": "iot-icon.png",
+	"description": "Liga de contenidos acerca del Internet De Las Cosas. En esta liga se comprenden 
+					proyectos en comunidad para la conexión de dispositivos a la nube para interactuar 
+					con ellos e interconectarlos. Además recogería conocimientos de programación, 
+					conocimientos de diseño e impresion 3D para prototipos, y conocimientos de electrónica 
+					para montar nuestros propios dispositivos.",
+	"background": "background-iot.png",
+	"theme_color": "#333FFF",
+	"tag": "Internet Of Things",
+	"locate": "es"
+}
