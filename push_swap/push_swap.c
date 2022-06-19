@@ -6,58 +6,34 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 11:22:54 by jaromero          #+#    #+#             */
-/*   Updated: 2022/06/16 18:12:44 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/06/19 13:50:35 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 //#include "libft.h"
 
-int	ft_comprob(char **argc, int count)
-{
-	char	*p;
-	char	*q;
-	int		i;
-	int		j;
-
-	j = 1;
-	i = 1;
-	p = argc[i];
-	q = argc[i + 1];
-	while (j != count)
-	{
-		while (i != count)
-		{
-			if (*p == *q)
-			{
-				while (*p == *q)
-				{
-					if (*p == '\0' && *q == '\0')
-						return (-1);
-					p++;
-					q++;
-				}
-			}
-			ft_printf("hola\n");
-			i++;
-			q = argc[i + 1];
-		}
-		i = 1;
-		j++;
-		q = argc[j + 1];
-		p = argc[j];
-	}
-	return (0);
-}
+int		ft_push_swap_source_validator(char **argc, int argn);
+int		ft_comprob_dupl(char **argc, int count);
+int		ft_comprob_dupli_loop(char **argc, int count, int i, int j);
+int		ft_comprob_num(char **argc, int argn);
+int		ft_comprob_int(char **argc, int argn);
+size_t	ft_strlen(const char *s);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
 int	main(int argn, char **argc)
 {
 	int	i;
 
 	if (argn < 2)
+		return (0);
+	i = ft_push_swap_source_validator(argc, argn);
+	if (i == 0)
+		ft_printf("comprobarcion OK\n");
+	if (i < 0)
+	{
 		ft_printf("error\n");
-	i = ft_comprob(argc, argn);
-	if (i == -1)
-		ft_printf("error\n");
+		return (-1);
+	}
 	return (0);
 }
