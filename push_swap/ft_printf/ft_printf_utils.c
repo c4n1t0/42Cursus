@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 13:02:36 by jaromero          #+#    #+#             */
-/*   Updated: 2022/06/03 17:50:03 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/06/20 22:13:34 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ int	ft_unsigned_putnbr(unsigned int n, int i)
 {
 	int	d;
 
-	if (n < 0)
-		n = 2 ^ 32 + n;
+	if ((int)n < 0)
+		n = (2 ^ 32) + n;
 	if (n < 10)
 	{
 		n = n + '0';

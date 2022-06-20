@@ -1,6 +1,6 @@
-NAME	= libftprintf.a
+NAME	= ft_push_swap.a
 
-SOURCES	= ft_printf.c ft_printf_utils.c hexadecimales.c
+SOURCES	= push_swap_move.c push_swap_source_validator.c push_swap_utils.c push_swap.c
 
 OBJECTS	= $(SOURCES:.c=.o)
 
@@ -10,7 +10,12 @@ CFLAGS	= -Wall -Wextra -Werror
 
 all:	$(NAME)
 
-$(NAME):	$(OBJECTS)
+$(NAME):	
+			make libft/
+			cp libft/libft.a ./
+			make ft_printf/
+			cp ft_printf/libftprintf.a ./			
+			$(OBJECTS)
 			ar rcs $(NAME) $(OBJECTS)
 
 %.o: %.c
