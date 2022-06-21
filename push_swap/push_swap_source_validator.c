@@ -6,15 +6,11 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 12:12:50 by jaromero          #+#    #+#             */
-/*   Updated: 2022/06/20 22:11:02 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/06/21 17:24:25 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-//#include "libft.h"
-
-size_t	ft_strlen(const char *s);
-int		ft_strncmp(const char *s1, const char *s2, size_t n);
+#include "ft_push_swap.h"
 
 int	ft_comprob_int(char **argc, int argn)
 {

@@ -6,11 +6,11 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 00:12:35 by jaromero          #+#    #+#             */
-/*   Updated: 2022/06/20 22:18:03 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/06/21 17:23:26 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "ft_push_swap.h"
 
 int	ft_atoi(const char *nptr)
 {

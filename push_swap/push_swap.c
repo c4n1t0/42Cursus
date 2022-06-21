@@ -6,22 +6,11 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 11:22:54 by jaromero          #+#    #+#             */
-/*   Updated: 2022/06/20 22:10:46 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/06/21 23:50:25 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include <stdlib.h>
-//#include "libft.h"
-
-int		ft_push_swap_source_validator(char **argc, int argn);
-int		ft_comprob_dupl(char **argc, int count);
-int		ft_comprob_dupli_loop(char **argc, int count, int i, int j);
-int		ft_comprob_num(char **argc, int argn);
-int		ft_comprob_int(char **argc, int argn);
-size_t	ft_strlen(const char *s);
-int		ft_strncmp(const char *s1, const char *s2, size_t n);
-int		ft_atoi(const char *nptr);
+#include "ft_push_swap.h"
 
 int	*ft_resrv_stack(int argn, char **argc)
 {
@@ -70,6 +59,16 @@ int	main(int argn, char **argc)
 	}
 	ptr = ft_resrv_stack(argn, argc);
 	ft_print_stack(ptr, (argn - 1));
+	ft_printf("\n");
+	ft_swap_a_SA(ptr);
+	ft_print_stack(ptr, (argn - 1));
+	ft_printf("\n");
+	ft_rotate_a_ra(ptr, (argn - 1));
+	ft_print_stack(ptr, (argn - 1));
+	ft_printf("\n");
+	ft_reverse_rotate_a_rra(ptr, (argn - 1));
+	ft_print_stack(ptr, (argn - 1));
+	ft_printf("\n");
 	free(ptr);
 	return (0);
 }
