@@ -6,13 +6,13 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 21:00:41 by jaromero          #+#    #+#             */
-/*   Updated: 2022/06/21 23:52:08 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/06/23 21:33:18 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-void	ft_swap_a_SA(int *ptr)
+void	ft_swap_a_sa(int *ptr)
 {
 	int	swap;
 
@@ -22,7 +22,8 @@ void	ft_swap_a_SA(int *ptr)
 	ft_printf("sa\n");
 }
 //ojo push A no está completa, hay que tratar stack B
-int	*ft_push_A(int *ptrA, int *ptrB, int count_a, int count_b)
+
+int	*ft_push_a(int *ptrA, int *ptrB, int count_a, int count_b)
 {
 	int	*rtp;
 	int	i;
@@ -66,14 +67,13 @@ void	ft_rotate_a_ra(int *ptr, int count_a)
 
 void	ft_reverse_rotate_a_rra(int *ptr, int count_a)
 {
-	int rotate;
-	int i;
-	int j;
+	int	rotate;
+	int	i;
+	int	j;
 
 	rotate = ptr[count_a - 1];
 	i = count_a;
 	j = count_a - 1;
-
 	while (i > 0)
 	{
 		ptr[i] = ptr[j];

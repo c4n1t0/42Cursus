@@ -1,45 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_utils.c                                  :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/19 00:12:35 by jaromero          #+#    #+#             */
-/*   Updated: 2022/06/26 17:49:57 by jaromero         ###   ########.fr       */
+/*   Created: 2022/05/08 19:19:56 by jaromero          #+#    #+#             */
+/*   Updated: 2022/05/13 13:46:18 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_push_swap.h"
+#include "libft.h"
 
-int	ft_swap_validator(int *ptr, int len)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	int	i;
+	t_list	*new;
+	t_list	*temp;
 
-	i = 0;
-	while (i < (len - 2))
+	if (lst == 0)
+		return (0);
+	new = ft_lstnew(f(lst->content));
+	if (new == 0)
+		return (0);
+	temp = new;
+	while (lst->next)
 	{
-		if (ptr[i] > ptr[i + 1])
-			return (-1);
-		i++;
+		temp->next = ft_lstnew(f(lst->next->content));
+		if (!temp->next)
+		{
+			ft_lstclear(&new, del);
+			return (0);
+		}
+		temp = temp->next;
+		lst = lst->next;
 	}
-	return (0);
-}
-
-int	*ft_resrv_stack(int argn, char **argc)
-{
-	int	i;
-	int	j;
-	int	*ptr;
-
-	j = 0;
-	i = 1;
-	ptr = malloc((argn - 1) * sizeof(int));
-	while (i < argn)
-	{
-		ptr[j] = ft_atoi(argc[i]);
-		i++;
-		j++;
-	}
-	return (ptr);
+	return (new);
 }

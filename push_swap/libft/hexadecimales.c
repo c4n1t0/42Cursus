@@ -6,11 +6,11 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 16:45:32 by jaromero          #+#    #+#             */
-/*   Updated: 2022/06/03 17:17:35 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/06/26 17:34:18 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 void	ft_hex_mayus(unsigned int num)
 {

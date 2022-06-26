@@ -1,45 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_utils.c                                  :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/19 00:12:35 by jaromero          #+#    #+#             */
-/*   Updated: 2022/06/26 17:49:57 by jaromero         ###   ########.fr       */
+/*   Created: 2022/04/25 11:46:18 by jaromero          #+#    #+#             */
+/*   Updated: 2022/04/25 12:31:50 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_push_swap.h"
+#include "libft.h"
 
-int	ft_swap_validator(int *ptr, int len)
+int	ft_atoi(const char *nptr)
 {
-	int	i;
+	int	signo;
+	int	dev;
 
-	i = 0;
-	while (i < (len - 2))
+	signo = 1;
+	dev = 0;
+	while (*nptr == ' ' || *nptr == '\n' || *nptr == '\t' || *nptr == '\v'
+		|| *nptr == '\f' || *nptr == '\r')
+		nptr++;
+	if (*nptr == '+' || *nptr == '-')
 	{
-		if (ptr[i] > ptr[i + 1])
-			return (-1);
-		i++;
+		if (*nptr == '-')
+			signo = signo * -1;
+		nptr++;
 	}
-	return (0);
-}
-
-int	*ft_resrv_stack(int argn, char **argc)
-{
-	int	i;
-	int	j;
-	int	*ptr;
-
-	j = 0;
-	i = 1;
-	ptr = malloc((argn - 1) * sizeof(int));
-	while (i < argn)
+	while (*nptr >= '0' && *nptr <= '9')
 	{
-		ptr[j] = ft_atoi(argc[i]);
-		i++;
-		j++;
+		dev = dev * 10 + (*nptr - '0');
+		nptr++;
 	}
-	return (ptr);
+	dev = dev * signo;
+	return (dev);
 }

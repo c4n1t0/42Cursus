@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 12:12:50 by jaromero          #+#    #+#             */
-/*   Updated: 2022/06/21 17:24:25 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/06/23 21:31:32 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,20 @@ int	ft_comprob_num(char **argc, int argn)
 {
 	char	*p;
 	int		i;
+	int		x;
 
+	x = 0;
 	i = 1;
 	p = argc[i];
 	while (i < argn)
 	{
 		while (*p != '\0')
 		{
-			if (*p == '-' || *p == '+')
+			if ((*p == '-' && x == 0) || (*p == '+' && x == 0))
+			{
 				p++;
+				x = 1;
+			}
 			if (*p < 48 || *p > 57)
 				return (-1);
 			p++;

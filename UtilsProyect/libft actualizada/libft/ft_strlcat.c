@@ -1,45 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_utils.c                                  :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/19 00:12:35 by jaromero          #+#    #+#             */
-/*   Updated: 2022/06/26 17:49:57 by jaromero         ###   ########.fr       */
+/*   Created: 2022/04/22 10:13:47 by jaromero          #+#    #+#             */
+/*   Updated: 2022/05/16 00:36:10 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_push_swap.h"
+#include "libft.h"
 
-int	ft_swap_validator(int *ptr, int len)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	int	i;
+	unsigned long	src1;
+	unsigned long	dst1;
+	int				x;
 
-	i = 0;
-	while (i < (len - 2))
+	src1 = ft_strlen(src);
+	dst1 = ft_strlen(dst);
+	x = dst1;
+	if (size <= dst1)
+		return (size + src1);
+	while (dst1 < (size - 1) && *src != '\0')
 	{
-		if (ptr[i] > ptr[i + 1])
-			return (-1);
-		i++;
+		dst[dst1] = *src;
+		src++;
+		dst1++;
 	}
-	return (0);
-}
-
-int	*ft_resrv_stack(int argn, char **argc)
-{
-	int	i;
-	int	j;
-	int	*ptr;
-
-	j = 0;
-	i = 1;
-	ptr = malloc((argn - 1) * sizeof(int));
-	while (i < argn)
-	{
-		ptr[j] = ft_atoi(argc[i]);
-		i++;
-		j++;
-	}
-	return (ptr);
+	dst[dst1] = '\0';
+	return (src1 + x);
 }

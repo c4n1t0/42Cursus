@@ -6,11 +6,11 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 16:13:13 by jaromero          #+#    #+#             */
-/*   Updated: 2022/06/03 17:49:10 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/06/26 17:33:59 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 int	ft_conditions(char *p, int i, va_list args)
 {
