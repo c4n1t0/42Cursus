@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 11:22:54 by jaromero          #+#    #+#             */
-/*   Updated: 2022/06/26 14:21:38 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/06/26 20:35:40 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ void	ft_print_stack(int *ptr, int count)
 int	main(int argn, char **argc)
 {
 	int	i;
-	int	*ptr;
+	int	*ptrA;
+	int	*ptrB;
 
 	if (argn <= 2)
 		return (0);
@@ -38,11 +39,15 @@ int	main(int argn, char **argc)
 		ft_printf("Error\n");
 		return (-1);
 	}
-	ptr = ft_resrv_stack(argn, argc);
-	if (ft_swap_validator(ptr, argn) == 0)
+	ptrA = ft_resrv_stack(argn, argc);
+	ptrB = malloc(argn * sizeof(int));
+	if (ft_swap_validator(ptrA, argn) == 0)
 		return (0);
-	ft_push_swap(ptr, (argn - 1));
-	ft_print_stack(ptr, (argn - 1));
-	free(ptr);
+	//ft_print_stack(ptrA, (argn - 1));
+	ft_push_swap(ptrA, ptrB, (argn - 1));
+	ft_print_stack(ptrA, (argn - 1));
+	free(ptrA);
+	free(ptrB);
+	//system("leaks -q push_swap");
 	return (0);
 }

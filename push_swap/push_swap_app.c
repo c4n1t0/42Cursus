@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 12:10:47 by jaromero          #+#    #+#             */
-/*   Updated: 2022/06/26 17:25:34 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/06/26 20:37:47 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,14 +69,19 @@ void	ft_swap_3(int *ptr, int len)
 	}
 }
 
-int	ft_push_swap(int *ptr, int len)
+int	ft_push_swap(int *ptrA, int *ptrB, int count_a)
 {
-	if (len == 2)
+	int	count_b;
+
+	count_b = 0;
+	count_b++;
+	ptrB[count_b] = 0;
+	if (count_a == 2)
 	{
-		ft_rotate_a_ra(ptr, len);
+		ft_rotate_a_ra(ptrA, count_a);
 		return (0);
 	}
-	if (len == 3)
-		ft_swap_3(ptr, len);
+	if (count_a == 3)
+		ft_swap_3(ptrA, count_a);
 	return (0);
 }

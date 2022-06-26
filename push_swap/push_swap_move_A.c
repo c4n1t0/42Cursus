@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 21:00:41 by jaromero          #+#    #+#             */
-/*   Updated: 2022/06/23 21:33:18 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/06/26 20:36:06 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,27 +23,29 @@ void	ft_swap_a_sa(int *ptr)
 }
 //ojo push A no está completa, hay que tratar stack B
 
-int	*ft_push_a(int *ptrA, int *ptrB, int count_a, int count_b)
+void	ft_push_a(int *ptrA, int *ptrB, int count_a)
 {
-	int	*rtp;
 	int	i;
 	int	j;
+	int	*rtp;
 
-	i = 1;
-	j = 0;
 	rtp = malloc((count_a + 1) * sizeof(int));
-	while (i < (count_a + 1))
+	rtp[0] = ptrB[0];
+	i = 0;
+	j = 0;
+	while (i < count_a)
 	{
-		rtp[i] = ptrA[j];
+		rtp[i + 1] = ptrA[i];
 		i++;
+	}
+	count_a++;
+	while (j < count_a)
+	{
+		ptrA[j] = rtp[j];
 		j++;
 	}
-	free(ptrA);
-	rtp[0] = ptrB[0];
-	if (count_b == 1)
-		free(ptrB);
+	free(rtp);
 	ft_printf("pa\n");
-	return (rtp);
 }
 
 void	ft_rotate_a_ra(int *ptr, int count_a)

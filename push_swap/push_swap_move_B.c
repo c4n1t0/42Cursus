@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 21:00:41 by jaromero          #+#    #+#             */
-/*   Updated: 2022/06/26 13:11:48 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/06/26 20:36:15 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,32 +21,30 @@ void	ft_swap_b_sb(int *ptr)
 	ptr[1] = swap;
 	ft_printf("sb\n");
 }
-//ojo push A no está completa, hay que tratar stack B
 
-int	*ft_push_b(int *ptrA, int *ptrB, int count_a, int count_b)
+void	ft_push_b(int *ptrA, int *ptrB, int count_b)
 {
-	int	*rtp;
 	int	i;
 	int	j;
-	int	x;
+	int	*rtp;
 
-	x = count_a;
-	i = x;
-	i = 1;
-	j = 0;
 	rtp = malloc((count_b + 1) * sizeof(int));
-	while (i < (count_b + 1))
+	rtp[0] = ptrA[0];
+	i = 0;
+	j = 0;
+	while (i < count_b)
 	{
-		rtp[i] = ptrA[j];
+		rtp[i + 1] = ptrB[i];
 		i++;
+	}
+	while (j < count_b)
+	{
+		ptrA[j] = rtp[j];
 		j++;
 	}
-	free(ptrA);
-	rtp[0] = ptrB[0];
-	if (count_b == 1)
-		free(ptrB);
-	ft_printf("pb\n");
-	return (rtp);
+	count_b++;
+	free(rtp);
+	ft_printf("pa\n");
 }
 
 void	ft_rotate_b_rb(int *ptr, int count_b)
