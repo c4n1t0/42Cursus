@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 00:12:35 by jaromero          #+#    #+#             */
-/*   Updated: 2022/06/26 17:49:57 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/07/03 14:29:53 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,45 @@ int	*ft_resrv_stack(int argn, char **argc)
 		j++;
 	}
 	return (ptr);
+}
+
+void	ft_print_stack(int *ptr, int count)
+{
+	int	i;
+
+	i = 0;
+	while (i < count)
+	{
+		ft_printf("%d\n", ptr[i]);
+		i++;
+	}
+	ft_printf("\n");
+}
+
+int	ft_look_big(int *ptr, int len)
+{
+	int	i;
+
+	i = 1;
+	while (i < len)
+	{
+		if (ptr[0] < ptr[i])
+			return (-1);
+		i++;
+	}
+	return (0);
+}
+
+int	ft_look_small(int *ptr, int len)
+{
+	int	i;
+
+	i = 1;
+	while (i < len)
+	{
+		if (ptr[0] > ptr[i])
+			return (-1);
+		i++;
+	}
+	return (0);
 }

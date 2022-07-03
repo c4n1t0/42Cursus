@@ -1,7 +1,8 @@
 NAME	= ft_push_swap.a
 
 SOURCES	=	push_swap_move_A.c push_swap_source_validator.c push_swap_utils.c push_swap.c \
-			push_swap_move_B.c push_swap_app.c
+			push_swap_move_B.c push_swap_app.c push_swap_move_tweece.c \
+			push_swap_move_tweece_AB.c
 
 OBJECTS	= $(SOURCES:.c=.o)
 
