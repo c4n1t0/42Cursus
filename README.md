@@ -2,6 +2,7 @@
 
 Este repositorio no es oficial, y no me responsabilizo de un mal uso sobre él.
 Cada código es diferente de una persona a otra, y este está desarrollado por mí.
+Te invito a leer mi código, comprenderlo e inspirarte en él, pero nunca a copiarlo ;)
 
 - El proyecto Libft está aprobado con un 125/100 y comprobado con el validador Francinette 42.
 - El proyecto Get_Next_Line está aprobado con un 125/100 y comprobado con el validador Francinette 42.
