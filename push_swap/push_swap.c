@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 11:22:54 by jaromero          #+#    #+#             */
-/*   Updated: 2022/07/04 13:18:06 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/07/04 16:11:50 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	main(int argc, char **argv)
 		if (ft_swap_validator(ptrA, argc) == 0)
 			return (0);
 		ft_push_swap(ptrA, ptrB, (argc - 1));
-		ft_print_stack(ptrA, (argc - 1));
+		//ft_print_stack(ptrA, (argc - 1));
 		free(ptrA);
 		free(ptrB);
 	}
