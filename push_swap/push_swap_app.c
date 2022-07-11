@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 12:10:47 by jaromero          #+#    #+#             */
-/*   Updated: 2022/07/11 18:50:23 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/07/11 22:05:19 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -295,6 +295,23 @@ void	ft_swap_100_v2(int *ptrA, int *ptrB, int count_a, int count_b)
 				ft_rotate_a_ra(ptrA, count_a);
 		}
 	}
+	/*cut = count_a;
+	while (ft_look_cut_down(ptrA, count_a, cut) > -1)
+	{
+		if (ptrA[0] <= cut)
+		{
+			ft_push_b(ptrA, ptrB, count_a, count_b);
+			count_a--;
+			count_b++;
+		}
+		else
+		{
+			if (ft_look_cut_down(ptrA, count_a, cut) > ft_look_cut_up(ptrA, count_a, cut))
+				ft_reverse_rotate_a_rra(ptrA, count_a);
+			else
+				ft_rotate_a_ra(ptrA, count_a);
+		}
+	}*/
 	while (count_a > 0)
 	{
 		if (ft_search_small(ptrA, count_a) > (count_a / 2))
@@ -311,23 +328,7 @@ void	ft_swap_100_v2(int *ptrA, int *ptrB, int count_a, int count_b)
 		count_a--;
 		count_b++;
 	}
-	cut = count_a;
-	while (ft_look_cut_down(ptrA, count_a, cut) > -1)
-	{
-		if (ptrA[0] <= cut)
-		{
-			ft_push_b(ptrA, ptrB, count_a, count_b);
-			count_a--;
-			count_b++;
-		}
-		else
-		{
-			if (ft_look_cut_down(ptrA, count_a, cut) > ft_look_cut_up(ptrA, count_a, cut))
-				ft_reverse_rotate_a_rra(ptrA, count_a);
-			else
-				ft_rotate_a_ra(ptrA, count_a);
-		}
-	}
+	
 	//ft_print_stack(ptrA, count_a);
 	//ft_print_stack(ptrB, count_b);
 	while (count_b > 0)

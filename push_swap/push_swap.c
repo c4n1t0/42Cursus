@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 11:22:54 by jaromero          #+#    #+#             */
-/*   Updated: 2022/07/10 12:11:54 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/07/11 22:20:35 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ int	main(int argc, char **argv)
 	int		*ptrB;
 	char	**p;
 	char	**q;
+	int x;
 
+	x = 0;
 	j = 0;
 	i = 0;
 	if (argc < 2)
@@ -38,6 +40,13 @@ int	main(int argc, char **argv)
 			q[i + 1] = p[i];
 			i++;
 		}
+		while (p[x])
+		{
+			ft_printf("%s\n", q[x]);
+			x++;
+		}
+		free(p);
+		ft_printf("j = %d\n", j); // hasta aqui llega
 		if (ft_push_swap_source_validator(q, j + 1) < 0)
 		{
 			ft_printf("Error\n");
@@ -45,6 +54,7 @@ int	main(int argc, char **argv)
 		}
 		ptrA = ft_resrv_stack(j + 1, q);
 		ptrB = malloc((j + 1) * sizeof(int));
+		free(q);
 		if (ft_swap_validator(ptrA, j + 1) == 0)
 			return (0);
 		ft_push_swap(ptrA, ptrB, j);
