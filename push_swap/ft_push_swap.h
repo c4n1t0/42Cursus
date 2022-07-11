@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 21:11:43 by jaromero          #+#    #+#             */
-/*   Updated: 2022/07/03 14:30:41 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/07/04 22:13:54 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int		*ft_resrv_stack(int argn, char **argc);
 int		ft_push_swap(int *ptrA, int *ptrB, int count_a);
 int		ft_look_big(int *ptr, int len);
 int		ft_look_small(int *ptr, int len);
+void	ft_swap_4(int *ptrA, int *ptrB, int count_a, int count_b);
 
 void	ft_swap_a_sa(int *ptr);
 void	ft_push_a(int *ptrA, int *ptrB, int count_a, int count_b);
