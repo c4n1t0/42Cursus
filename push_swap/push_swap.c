@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 11:22:54 by jaromero          #+#    #+#             */
-/*   Updated: 2022/07/11 22:20:35 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/07/12 17:10:36 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ int	main(int argc, char **argv)
 	int		*ptrA;
 	int		*ptrB;
 	char	**p;
-	char	**q;
-	int x;
+	int		x;
 
 	x = 0;
 	j = 0;
@@ -34,27 +33,27 @@ int	main(int argc, char **argv)
 			j++;
 		if (j < 2)
 			return (0);
-		q = calloc(j + 2, sizeof(char));
-		while (i < j)
+		/*while (p[x])
 		{
-			q[i + 1] = p[i];
-			i++;
-		}
-		while (p[x])
-		{
-			ft_printf("%s\n", q[x]);
+			ft_printf("%s\n", p[x]);
 			x++;
-		}
-		free(p);
-		ft_printf("j = %d\n", j); // hasta aqui llega
-		if (ft_push_swap_source_validator(q, j + 1) < 0)
+		}*/
+		if (ft_push_swap_source_validator(p, j, 0) < 0)
 		{
 			ft_printf("Error\n");
+			system("leaks -q push_swap");
 			return (-1);
 		}
-		ptrA = ft_resrv_stack(j + 1, q);
+		ptrA = ft_resrv_stack(j + 1, p, 0);
 		ptrB = malloc((j + 1) * sizeof(int));
-		free(q);
+		/*x = -1;
+		while (q[++x])
+			free(q[x]);
+		free(q);*/
+		x = -1;
+		while (p[++x])
+			free(p[x]);
+		free(p);
 		if (ft_swap_validator(ptrA, j + 1) == 0)
 			return (0);
 		ft_push_swap(ptrA, ptrB, j);
@@ -64,14 +63,14 @@ int	main(int argc, char **argv)
 	}
 	else if (argc > 2)
 	{
-		if (ft_push_swap_source_validator(argv, argc) < 0)
+		if (ft_push_swap_source_validator(argv, argc, 1) < 0)
 		{
 			ft_printf("Error\n");
 			return (-1);
 		}
-		ptrA = ft_resrv_stack(argc, argv);
+		ptrA = ft_resrv_stack(argc, argv, 1);
 		ptrB = malloc(argc * sizeof(int));
-		if (ft_swap_validator(ptrA, argc) == 0)
+		if (ft_swap_validator(ptrA, argc - 1) == 0)
 			return (0);
 		ft_push_swap(ptrA, ptrB, (argc - 1));
 		//ft_print_stack(ptrA, (argc - 1));

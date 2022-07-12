@@ -6,13 +6,13 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 12:12:50 by jaromero          #+#    #+#             */
-/*   Updated: 2022/07/03 12:12:34 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/07/12 13:38:31 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 
-int	ft_comprob_int(char **argc, int argn)
+int	ft_comprob_int(char **argc, int argn, int start)
 {
 	int		i;
 	int		j;
@@ -21,7 +21,7 @@ int	ft_comprob_int(char **argc, int argn)
 
 	max = "2147483647";
 	min = "-2147483648";
-	i = 1;
+	i = start;
 	while (i < argn)
 	{
 		if (ft_strlen(argc[i]) >= 10)
@@ -41,14 +41,14 @@ int	ft_comprob_int(char **argc, int argn)
 	return (0);
 }
 
-int	ft_comprob_num(char **argc, int argn)
+int	ft_comprob_num(char **argc, int argn, int start)
 {
 	char	*p;
 	int		i;
 	int		x;
 
 	x = 0;
-	i = 1;
+	i = start;
 	p = argc[i];
 	while (i < argn)
 	{
@@ -99,13 +99,13 @@ int	ft_comprob_dupli_loop(char **argc, int count, int i, int j)
 	return (0);
 }
 
-int	ft_comprob_dupl(char **argc, int count)
+int	ft_comprob_dupl(char **argc, int count, int start)
 {
 	int	i;
 	int	j;
 	int	x;
 
-	j = 0;
+	j = start - 1;
 	i = 0;
 	x = ft_comprob_dupli_loop(argc, count, i, j);
 	if (x == -1)
@@ -113,10 +113,10 @@ int	ft_comprob_dupl(char **argc, int count)
 	return (0);
 }
 
-int	ft_push_swap_source_validator(char **argc, int argn)
+int	ft_push_swap_source_validator(char **argc, int argn, int start)
 {
-	if (ft_comprob_num(argc, argn) < 0 || ft_comprob_int(argc, argn) < 0
-		|| ft_comprob_dupl(argc, argn) < 0)
+	if (ft_comprob_num(argc, argn, start) < 0 || ft_comprob_int(argc, argn, start) < 0
+		|| ft_comprob_dupl(argc, argn, start) < 0)
 		return (-1);
 	return (0);
 }

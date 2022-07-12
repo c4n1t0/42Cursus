@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 00:12:35 by jaromero          #+#    #+#             */
-/*   Updated: 2022/07/03 14:29:53 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/07/12 14:00:51 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,16 @@ int	ft_swap_validator(int *ptr, int len)
 	return (0);
 }
 
-int	*ft_resrv_stack(int argn, char **argc)
+int	*ft_resrv_stack(int argn, char **argc, int start)
 {
 	int	i;
 	int	j;
 	int	*ptr;
 
 	j = 0;
-	i = 1;
+	i = start;
 	ptr = malloc((argn - 1) * sizeof(int));
-	while (i < argn)
+	while (i + 1 < argn)
 	{
 		ptr[j] = ft_atoi(argc[i]);
 		i++;

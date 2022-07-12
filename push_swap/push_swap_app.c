@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 12:10:47 by jaromero          #+#    #+#             */
-/*   Updated: 2022/07/11 22:05:19 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/07/12 17:04:13 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	ft_swap_4(int *ptrA, int *ptrB, int count_a, int count_b)
 	x = 0;
 	if (ft_search_small(ptrA, count_a) > (count_a / 2))
 		x = 1;
-	while (ft_look_small(ptrA, count_a - 1) != 0)
+	while (ft_look_small(ptrA, count_a) != 0)
 	{
 		if (x == 0)
 			ft_rotate_a_ra(ptrA, count_a);
@@ -228,10 +228,15 @@ void	ft_swap_100_v2(int *ptrA, int *ptrB, int count_a, int count_b)
 
 	x = 0;
 	cut = 20;
+	//ft_printf("ptrA[0] = %d\n", ptrA[0]);
+	//ft_printf("count_a = %d\n", count_a);
+	// ft_print_stack(ptrA, count_a);
+	// ft_print_stack(ptrB, count_b);
 	while (ft_look_cut_down(ptrA, count_a, cut) > -1)
 	{
 		if (ptrA[0] <= cut)
 		{
+			
 			ft_push_b(ptrA, ptrB, count_a, count_b);
 			count_a--;
 			count_b++;
@@ -295,23 +300,6 @@ void	ft_swap_100_v2(int *ptrA, int *ptrB, int count_a, int count_b)
 				ft_rotate_a_ra(ptrA, count_a);
 		}
 	}
-	/*cut = count_a;
-	while (ft_look_cut_down(ptrA, count_a, cut) > -1)
-	{
-		if (ptrA[0] <= cut)
-		{
-			ft_push_b(ptrA, ptrB, count_a, count_b);
-			count_a--;
-			count_b++;
-		}
-		else
-		{
-			if (ft_look_cut_down(ptrA, count_a, cut) > ft_look_cut_up(ptrA, count_a, cut))
-				ft_reverse_rotate_a_rra(ptrA, count_a);
-			else
-				ft_rotate_a_ra(ptrA, count_a);
-		}
-	}*/
 	while (count_a > 0)
 	{
 		if (ft_search_small(ptrA, count_a) > (count_a / 2))
@@ -328,7 +316,7 @@ void	ft_swap_100_v2(int *ptrA, int *ptrB, int count_a, int count_b)
 		count_a--;
 		count_b++;
 	}
-	
+	//ft_swap_5(ptrA, ptrB, count_a, count_b);
 	//ft_print_stack(ptrA, count_a);
 	//ft_print_stack(ptrB, count_b);
 	while (count_b > 0)
@@ -343,15 +331,10 @@ void	ft_swap_100_v2(int *ptrA, int *ptrB, int count_a, int count_b)
 				ft_reverse_rotate_b_rrb(ptrB, count_b);
 		}
 		x = 0;
-		//if (ptrB[0] < y)
-		//{
 		ft_push_a(ptrA, ptrB, count_a, count_b);
-		count_a++;
+		count_a++;	
 		count_b--;
-		//ft_swap_100(ptrA, ptrB, count_a, count_b);
-		//}
 	}
-	
 	//ft_print_stack(ptrA, count_a);
 	//ft_print_stack(ptrB, count_b);
 }
@@ -375,7 +358,8 @@ int	ft_push_swap(int *ptrA, int *ptrB, int count_a)
 	else if (count_a > 5)
 	{
 		ft_renum(ptrA, count_a);
-		ft_swap_100_v2(ptrA, ptrB, count_a, count_b);
+		ft_swap_100(ptrA, ptrB, count_a, count_b);
+		//ft_swap_100_v2(ptrA, ptrB, count_a, count_b);
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 21:11:43 by jaromero          #+#    #+#             */
-/*   Updated: 2022/07/04 22:13:54 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/07/12 13:42:11 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 
 # include "libft/libft.h"
 
-int		ft_push_swap_source_validator(char **argc, int argn);
-int		ft_comprob_dupl(char **argc, int count);
+int		ft_push_swap_source_validator(char **argc, int argn, int start);
+int		ft_comprob_dupl(char **argc, int count, int start);
 int		ft_comprob_dupli_loop(char **argc, int count, int i, int j);
-int		ft_comprob_num(char **argc, int argn);
-int		ft_comprob_int(char **argc, int argn);
+int		ft_comprob_num(char **argc, int argn, int start);
+int		ft_comprob_int(char **argc, int argn, int start);
 
 int		ft_swap_validator(int *ptr, int len);
-int		*ft_resrv_stack(int argn, char **argc);
+int		*ft_resrv_stack(int argn, char **argc, int start);
 int		ft_push_swap(int *ptrA, int *ptrB, int count_a);
 int		ft_look_big(int *ptr, int len);
 int		ft_look_small(int *ptr, int len);
