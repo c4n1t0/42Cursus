@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 12:12:50 by jaromero          #+#    #+#             */
-/*   Updated: 2022/07/12 13:38:31 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/07/21 09:08:26 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,8 +115,8 @@ int	ft_comprob_dupl(char **argc, int count, int start)
 
 int	ft_push_swap_source_validator(char **argc, int argn, int start)
 {
-	if (ft_comprob_num(argc, argn, start) < 0 || ft_comprob_int(argc, argn, start) < 0
-		|| ft_comprob_dupl(argc, argn, start) < 0)
+	if (ft_comprob_num(argc, argn, start) < 0 || ft_comprob_int(argc, argn,
+			start) < 0 || ft_comprob_dupl(argc, argn, start) < 0)
 		return (-1);
 	return (0);
 }

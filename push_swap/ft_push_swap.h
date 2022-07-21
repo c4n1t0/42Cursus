@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 21:11:43 by jaromero          #+#    #+#             */
-/*   Updated: 2022/07/12 21:58:02 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/07/21 18:25:18 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define FT_PUSH_SWAP_H
 
 # include "libft/libft.h"
+
+int		ft_arg_2(char **argv, char **p, int x, int j);
 
 int		ft_push_swap_source_validator(char **argc, int argn, int start);
 int		ft_comprob_dupl(char **argc, int count, int start);
@@ -24,10 +26,21 @@ int		ft_comprob_int(char **argc, int argn, int start);
 int		ft_swap_validator(int *ptr, int len);
 int		*ft_resrv_stack(int argn, char **argc, int start);
 int		*ft_resrv_stack1(int argn, char **argc, int start);
-int		ft_push_swap(int *ptrA, int *ptrB, int count_a);
 int		ft_look_big(int *ptr, int len);
 int		ft_look_small(int *ptr, int len);
+
+void	ft_swap_3(int *ptr, int len);
 void	ft_swap_4(int *ptrA, int *ptrB, int count_a, int count_b);
+void	ft_swap_5(int *ptrA, int *ptrB, int count_a, int count_b);
+int		ft_push_swap(int *ptrA, int *ptrB, int count_a);
+
+void	ft_swap_100(int *ptrA, int *ptrB, int count_a, int count_b);
+
+int		ft_search_small(int *ptr, int len);
+int		ft_search_big(int *ptr, int len);
+void	ft_renum(int *ptrA, int count_a);
+int		ft_look_cut_down(int *ptrA, int count_a, int cut);
+int		ft_look_cut_up(int *ptrA, int count_a, int cut);
 
 void	ft_swap_a_sa(int *ptr);
 void	ft_push_a(int *ptrA, int *ptrB, int count_a, int count_b);
@@ -47,5 +60,6 @@ void	ft_rotate_rr(int *ptr_a, int count_a, int *ptr_b, int count_b);
 void	ft_reverse_rotate_rrr(int *ptr_a, int count_a, int *ptr_b, int count_b);
 
 void	ft_print_stack(int *ptr, int count);
+int		ft_biggest_from_stack(int ref, int *ptr, int count);
 
 #endif

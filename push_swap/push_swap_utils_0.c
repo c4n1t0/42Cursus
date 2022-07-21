@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_utils.c                                  :+:      :+:    :+:   */
+/*   push_swap_utils_0.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 00:12:35 by jaromero          #+#    #+#             */
-/*   Updated: 2022/07/12 21:58:16 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/07/21 09:07:55 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,19 +60,6 @@ int	*ft_resrv_stack1(int argn, char **argc, int start)
 		j++;
 	}
 	return (ptr);
-}
-
-void	ft_print_stack(int *ptr, int count)
-{
-	int	i;
-
-	i = 0;
-	while (i < count)
-	{
-		ft_printf("%d\n", ptr[i]);
-		i++;
-	}
-	ft_printf("\n");
 }
 
 int	ft_look_big(int *ptr, int len)
