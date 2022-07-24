@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 12:10:47 by jaromero          #+#    #+#             */
-/*   Updated: 2022/07/21 17:43:43 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/07/24 12:52:10 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,13 @@ void	ft_swap_5(int *ptrA, int *ptrB, int count_a, int count_b)
 int	ft_push_swap(int *ptrA, int *ptrB, int count_a)
 {
 	int	count_b;
+	struct	s_counts	s;
+	int asd;
 
+	
+	s.count_a = count_a;
+	s.prueba = &asd;
+	asd = 7;
 	count_b = 0;
 	if (count_a == 2)
 	{
@@ -95,10 +101,16 @@ int	ft_push_swap(int *ptrA, int *ptrB, int count_a)
 		ft_swap_4(ptrA, ptrB, count_a, count_b);
 	else if (count_a == 5)
 		ft_swap_5(ptrA, ptrB, count_a, count_b);
-	else if (count_a > 5)
+	else if (count_a > 5 && count_a < 150)
 	{
 		ft_renum(ptrA, count_a);
-		ft_swap_100(ptrA, ptrB, count_a, count_b);
+		ft_swap_100(ptrA, ptrB, count_a, count_b, s);
+		//ft_printf("s.prueba = %d\n", *s.prueba);
+	}
+	else if (count_a >= 150)
+	{
+		ft_renum(ptrA, count_a);
+		ft_swap_500(ptrA, ptrB, count_a, count_b);
 	}
 	return (0);
 }
