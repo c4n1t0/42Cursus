@@ -17,7 +17,7 @@ $(NAME):	$(OBJECTS)
 			@make -C libft/
 			@cp libft/libft.a .
 			@ar rcs $(NAME) $(OBJECTS)
-			gcc -Wall -Wextra -Werror ft_push_swap.a libft.a -o push_swap
+			$(CC) $(CFLAGS) $(NAME) libft.a -o push_swap
 			make fclean
 
 %.o: %.c

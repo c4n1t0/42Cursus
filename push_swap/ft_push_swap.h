@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 21:11:43 by jaromero          #+#    #+#             */
-/*   Updated: 2022/07/24 12:39:57 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/07/25 00:48:16 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,13 @@
 
 struct	s_counts
 {
-	int	count_a;
-	int	count_b;
+	int	*count_a;
+	int	*count_b;
 	int	cut;
 	int	mid;
-    int ref;
-	int *prueba;
+	int	ref;
+	int	x;
+	int	loop;
 };
 
 int		ft_arg_2(char **argv, char **p, int x, int j);
@@ -45,9 +46,15 @@ void	ft_swap_4(int *ptrA, int *ptrB, int count_a, int count_b);
 void	ft_swap_5(int *ptrA, int *ptrB, int count_a, int count_b);
 int		ft_push_swap(int *ptrA, int *ptrB, int count_a);
 
-void	ft_swap_100(int *ptrA, int *ptrB, int count_a, int count_b, struct s_counts s);
-void	ft_swap_500(int *ptrA, int *ptrB, int count_a, int count_b);
+void	ft_sub_ini_part(int *ptrA, int *ptrB, struct s_counts s);
+void	ft_ini_part(int *ptrA, int *ptrB, struct s_counts s);
+void	ft_loop_part(int *ptrA, int *ptrB, struct s_counts s);
+void	ft_sub_loop_part(int *ptrA, int *ptrB, struct s_counts s);
+void	ft_part_final_ordenation(int *ptrA, int *ptrB, struct s_counts s);
+
 void	ft_push_a_all(int *ptrA, int count_a, int *ptrB, int count_b);
+void	ft_swap_100(int *ptrA, int *ptrB, int count_a, int count_b);
+void	ft_swap_500(int *ptrA, int *ptrB, int count_a, int count_b);
 
 int		ft_search_small(int *ptr, int len);
 int		ft_search_big(int *ptr, int len);

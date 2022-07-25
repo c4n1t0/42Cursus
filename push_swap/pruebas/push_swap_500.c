@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 17:42:44 by jaromero          #+#    #+#             */
-/*   Updated: 2022/07/25 02:03:07 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/07/25 00:52:44 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,25 +68,6 @@ void	ft_swap_100(int *ptrA, int *ptrB, int count_a, int count_b)
 
 void	ft_swap_500(int *ptrA, int *ptrB, int count_a, int count_b)
 {
-	struct s_counts	s;
-	int				i;
-
-	i = 12;
-	s.loop = 11;
-	s.count_a = &count_a;
-	s.count_b = &count_b;
-	s.ref = *s.count_a / i;
-	s.x = 0;
-	s.cut = s.ref;
-	s.mid = s.cut / 2;
-	ft_loop_part(ptrA, ptrB, s);
-	ft_part_final_ordenation(ptrA, ptrB, s);
-	ft_swap_5(ptrA, ptrB, *s.count_a, *s.count_b);
-	ft_push_a_all(ptrA, *s.count_a, ptrB, *s.count_b);
-}
-
-/*void	ft_swap_500(int *ptrA, int *ptrB, int count_a, int count_b)
-{
 	int	cut;
 	int	mid;
 	int	x;
@@ -98,6 +79,33 @@ void	ft_swap_500(int *ptrA, int *ptrB, int count_a, int count_b)
 	x = 0;
 	cut = ref;
 	mid = cut / 2;
+	/*while (ft_look_cut_down(ptrA, count_a, cut) > -1)
+	{
+		if (ptrA[0] <= cut)
+		{
+			count_a--;
+			count_b++;
+			ft_push_b(ptrA, ptrB, count_a, count_b);
+			if (ft_look_cut_down(ptrA, count_a, cut) == -1 && ptrB[0] <= (cut - mid))
+				ft_rotate_b_rb(ptrB, count_b);
+		}
+		else
+		{
+			if (ft_look_cut_down(ptrA, count_a, cut) > ft_look_cut_up(ptrA, count_a, cut))
+			{
+				ft_reverse_rotate_a_rra(ptrA, count_a);
+				if (ptrB[0] <= (cut - mid))
+					ft_rotate_b_rb(ptrB, count_b);
+			}
+			else
+			{
+				if (ptrB[0] <= (cut - mid))
+					ft_rotate_rr(ptrA, count_a, ptrB, count_b);
+				else
+					ft_rotate_a_ra(ptrA, count_a);
+			}
+		}
+	}*/
 	while (ft_look_cut_down(ptrA, count_a, 100) > -1)
 	{
 		cut = cut + ref;
@@ -137,6 +145,11 @@ void	ft_swap_500(int *ptrA, int *ptrB, int count_a, int count_b)
 				}
 			}
 		}
+		/*while (i > 0)
+		{
+			ft_reverse_rotate_b_rrb(ptrB, count_b);
+			i--;
+		}*/
 		x++;
 	}
 
@@ -179,6 +192,11 @@ void	ft_swap_500(int *ptrA, int *ptrB, int count_a, int count_b)
 				}
 			}
 		}
+		/*while (i > 0)
+		{
+			ft_reverse_rotate_b_rrb(ptrB, count_b);
+			i--;
+		}*/
 		x++;
 	}
 
@@ -221,6 +239,11 @@ void	ft_swap_500(int *ptrA, int *ptrB, int count_a, int count_b)
 				}
 			}
 		}
+		/*while (i > 0)
+		{
+			ft_reverse_rotate_b_rrb(ptrB, count_b);
+			i--;
+		}*/
 		x++;
 	}
 
@@ -263,6 +286,11 @@ void	ft_swap_500(int *ptrA, int *ptrB, int count_a, int count_b)
 				}
 			}
 		}
+		/*while (i > 0)
+		{
+			ft_reverse_rotate_b_rrb(ptrB, count_b);
+			i--;
+		}*/
 		x++;
 	}
 
@@ -305,9 +333,16 @@ void	ft_swap_500(int *ptrA, int *ptrB, int count_a, int count_b)
 				}
 			}
 		}
+		/*while (i > 0)
+		{
+			ft_reverse_rotate_b_rrb(ptrB, count_b);
+			i--;
+		}*/
 		x++;
 	}
-	
+	//ft_part_final_ordenation(ptrA, count_a, ptrB, count_b);
+	//ft_print_stack(ptrA, count_a);
+	//ft_print_stack(ptrB, count_b);
 	x = 0;
 	while (count_a > 5)
 	{
@@ -332,4 +367,4 @@ void	ft_swap_500(int *ptrA, int *ptrB, int count_a, int count_b)
 	}
 	ft_swap_5(ptrA, ptrB, count_a, count_b);
 	ft_push_a_all(ptrA, count_a, ptrB, count_b);
-}*/
+}
