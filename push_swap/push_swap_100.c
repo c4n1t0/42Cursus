@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 17:42:44 by jaromero          #+#    #+#             */
-/*   Updated: 2022/07/26 17:54:15 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/07/27 00:54:59 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_sub_ini_part(int *ptrA, int *ptrB, struct s_counts s)
 			*s.count_a, s.cut))
 	{
 		ft_reverse_rotate_a_rra(ptrA, *s.count_a);
-		if (ptrB[0] <= s.mid)
+		if (ptrB[0] <= s.mid && *s.count_b > 1)
 			ft_rotate_b_rb(ptrB, *s.count_b);
 	}
 	else
