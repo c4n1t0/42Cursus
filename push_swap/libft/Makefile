@@ -1,5 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/07/26 19:36:20 by jaromero          #+#    #+#              #
+#    Updated: 2022/07/26 19:36:25 by jaromero         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-  
 NAME = libft.a
 SOURCES = \
 	ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
@@ -10,7 +20,7 @@ SOURCES = \
 	ft_itoa.c ft_strmapi.c ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c \
 	ft_putendl_fd.c ft_putnbr_fd.c hexadecimales.c ft_printf.c ft_printf_utils.c \
 	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c \
-	ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
+	ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c get_next_line.c
 OBJECTS = $(SOURCES:.c=.o)
 
 CC = gcc
@@ -19,7 +29,7 @@ CFLAGS = -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	$(AR) -r $@ $?
+	$(AR) -r $@  $?
 
 %.o: %.c
 	$(CC) -c $(CFLAGS) $?

@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/07/26 01:08:42 by jaromero          #+#    #+#              #
+#    Updated: 2022/07/26 01:08:43 by jaromero         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME	= ft_push_swap.a
 
 SOURCES	=	push_swap_move_A.c push_swap_source_validator.c push_swap_utils_0.c push_swap.c \
