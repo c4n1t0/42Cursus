@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 11:22:54 by jaromero          #+#    #+#             */
-/*   Updated: 2022/07/27 12:07:01 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/07/28 00:22:04 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	checker_read(int *ptr_a, int *ptr_b, int count_a)
 				return (ft_printf("Error\n"), -1);
 		}
 	}
-	if (ft_swap_validator(ptr_a, count_a + 1) == 0)
+	if (ft_swap_validator(ptr_a, count_a + 1) == 0 && *s.count_b == 0)
 		ft_printf("OK\n");
 	else
 		return (ft_printf("KO\n"), -1);

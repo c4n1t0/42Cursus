@@ -6,12 +6,13 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 22:47:15 by jaromero          #+#    #+#             */
-/*   Updated: 2022/06/26 17:33:02 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/07/26 19:28:46 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+# include <fcntl.h>
 # include <stdarg.h>
 # include <stddef.h>
 # include <stdio.h>
@@ -80,5 +81,11 @@ int					ft_calc_hex(unsigned int num, int i, char *p);
 void				ft_hex_mayus(unsigned int num);
 int					ft_num_neg(int n);
 int					ft_conditions(char *p, int i, va_list args);
+
+char				*get_next_line(int fd);
+char				*ft_free_static(char *str, char *buffer);
+char				*ft_save(char *str, int fd, int BUFFER_SIZE);
+char				*ft_rsv(char *str);
+char				*ft_save_rest(char *str);
 
 #endif

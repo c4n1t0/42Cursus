@@ -1,1 +1,1 @@
-Libft actualizada con ft_printf, falta por incluir GNL.
+Libft actualizada 28/07/2022.
