@@ -6,14 +6,14 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 21:11:43 by jaromero          #+#    #+#             */
-/*   Updated: 2022/07/27 12:37:00 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/07/27 13:04:15 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PUSH_SWAP_H
 # define FT_PUSH_SWAP_H
 
-# include "libft/libft.h"
+# include "../libft/libft.h"
 
 struct	s_counts
 {

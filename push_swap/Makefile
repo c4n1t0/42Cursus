@@ -6,16 +6,16 @@
 #    By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/26 01:08:42 by jaromero          #+#    #+#              #
-#    Updated: 2022/07/27 12:36:32 by jaromero         ###   ########.fr        #
+#    Updated: 2022/07/27 14:14:41 by jaromero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= ft_push_swap.a
+NAME	= srcs/ft_push_swap.a
 
-SOURCES	=	push_swap_move_A.c push_swap_source_validator.c push_swap_utils_0.c push_swap.c \
-			push_swap_move_B.c push_swap_app.c push_swap_move_tweece.c push_swap_100.c \
-			push_swap_move_tweece_AB.c push_swap_utils_1.c push_swap_utils_2.c \
-			push_swap_500.c
+SOURCES	=	srcs/push_swap_move_A.c srcs/push_swap_source_validator.c srcs/push_swap_utils_0.c srcs/push_swap.c \
+			srcs/push_swap_move_B.c srcs/push_swap_app.c srcs/push_swap_move_tweece.c srcs/push_swap_100.c \
+			srcs/push_swap_move_tweece_AB.c srcs/push_swap_utils_1.c srcs/push_swap_utils_2.c \
+			srcs/push_swap_500.c
 
 OBJECTS	= $(SOURCES:.c=.o)
 
@@ -27,12 +27,12 @@ all:	$(NAME)
 
 $(NAME):	$(OBJECTS)
 			@make -C libft/
-			@cp libft/libft.a .
+			@cp libft/libft.a srcs/
 			@ar rcs $(NAME) $(OBJECTS)
-			$(CC) $(CFLAGS) $(NAME) libft.a -o push_swap
+			$(CC) $(CFLAGS) $(NAME) srcs/libft.a -o push_swap
 			make fclean
 
-%.o: %.c
+%.o: srcs/%.c
 			$(CC) -c $(CFLAGS) $?
 
 clean:
@@ -43,7 +43,7 @@ fclean:
 			@make fclean -C libft/
 			@make clean
 			rm -f $(NAME)
-			rm -f libft.a
+			rm -f srcs/libft.a
 
 re:			fclean all
 			rm -f push_swap
