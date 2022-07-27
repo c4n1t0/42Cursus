@@ -6,16 +6,20 @@
 #    By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/26 01:08:42 by jaromero          #+#    #+#              #
-#    Updated: 2022/07/27 14:14:41 by jaromero         ###   ########.fr        #
+#    Updated: 2022/07/27 15:57:17 by jaromero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= srcs/ft_push_swap.a
 
+NAME_BONUS = bonus/checker.a
+
 SOURCES	=	srcs/push_swap_move_A.c srcs/push_swap_source_validator.c srcs/push_swap_utils_0.c srcs/push_swap.c \
 			srcs/push_swap_move_B.c srcs/push_swap_app.c srcs/push_swap_move_tweece.c srcs/push_swap_100.c \
 			srcs/push_swap_move_tweece_AB.c srcs/push_swap_utils_1.c srcs/push_swap_utils_2.c \
 			srcs/push_swap_500.c
+
+BSOURCES = bonus/checker_bonus.c bonus/push_swap_move_A_silent.c 
 
 OBJECTS	= $(SOURCES:.c=.o)
 
@@ -34,6 +38,8 @@ $(NAME):	$(OBJECTS)
 
 %.o: srcs/%.c
 			$(CC) -c $(CFLAGS) $?
+
+bonus:		
 
 clean:
 			@make clean -C libft/
