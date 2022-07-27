@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_push_swap.h                                     :+:      :+:    :+:   */
+/*   checker_push_swap.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 21:11:43 by jaromero          #+#    #+#             */
-/*   Updated: 2022/07/27 00:02:56 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/07/27 12:09:38 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PUSH_SWAP_H
-# define FT_PUSH_SWAP_H
+#ifndef CHECKER_PUSH_SWAP_H
+# define CHECKER_PUSH_SWAP_H
 
 # include "../libft/libft.h"
 
@@ -23,6 +23,8 @@ struct		s_counts
 };
 
 int			ft_arg_2(char **argv, char **p, int x, int j);
+int			checker_read(int *ptr_a, int *ptr_b, int count_a);
+int			checker_action(int *ptr_a, int *ptr_b, struct s_counts s);
 
 int			ft_push_swap_source_validator(char **argc, int argn, int start);
 int			ft_comprob_dupl(char **argc, int count, int start);
@@ -32,15 +34,7 @@ int			ft_comprob_int(char **argc, int argn, int start);
 
 int			ft_swap_validator(int *ptr, int len);
 int			*ft_resrv_stack(int argn, char **argc, int start);
-int			*ft_resrv_stack1(int argn, char **argc, int start);
-int			ft_look_big(int *ptr, int len);
-int			ft_look_small(int *ptr, int len);
-
-int			ft_search_small(int *ptr, int len);
-int			ft_search_big(int *ptr, int len);
-void		ft_renum(int *ptrA, int count_a);
-int			ft_look_cut_down(int *ptrA, int count_a, int cut);
-int			ft_look_cut_up(int *ptrA, int count_a, int cut);
+void		ft_print_stack(int *ptr, int count);
 
 void		ft_swap_a_sa(int *ptr);
 void		ft_push_a(int *ptrA, int *ptrB, int count_a, int count_b);
@@ -59,8 +53,4 @@ void		ft_swap_ss(int *ptr_a, int *ptr_b);
 void		ft_rotate_rr(int *ptr_a, int count_a, int *ptr_b, int count_b);
 void		ft_reverse_rotate_rrr(int *ptr_a, int count_a, int *ptr_b,
 				int count_b);
-
-void		ft_print_stack(int *ptr, int count);
-int			ft_biggest_from_stack(int ref, int *ptr, int count);
-
 #endif

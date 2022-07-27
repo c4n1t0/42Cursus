@@ -6,11 +6,11 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 12:12:50 by jaromero          #+#    #+#             */
-/*   Updated: 2022/07/21 09:08:26 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/07/27 11:55:18 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_push_swap.h"
+#include "checker_push_swap.h"
 
 int	ft_comprob_int(char **argc, int argn, int start)
 {

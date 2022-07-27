@@ -6,11 +6,11 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 21:00:41 by jaromero          #+#    #+#             */
-/*   Updated: 2022/07/26 23:55:24 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/07/27 11:54:55 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_push_swap.h"
+#include "checker_push_swap.h"
 
 void	ft_swap_b_sb(int *ptr)
 {

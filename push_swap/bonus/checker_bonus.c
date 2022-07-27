@@ -6,41 +6,42 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 11:22:54 by jaromero          #+#    #+#             */
-/*   Updated: 2022/07/27 00:44:01 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/07/27 12:07:01 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_push_swap.h"
+#include "checker_push_swap.h"
 
-void	checker_action(int *ptr_a, int *ptr_b, struct s_counts s)
+int	checker_action(int *ptr_a, int *ptr_b, struct s_counts s)
 {
-	if (ft_strncmp(s.ptr, "sa\n", 4))
+	if (ft_strncmp(s.ptr, "sa\n", 4) == 0)
 		ft_swap_a_sa(ptr_a);
-	/*if (ft_strncmp(s.ptr, "pa\n", 4))
-	{
-		ft_push_a(ptr_a, ptr_b, *s.count_a, *s.count_b);
-		*s.count_a = *s.count_a + 1;
-		*s.count_b = *s.count_b - 1;
-	}*/
-	if (ft_strncmp(s.ptr, "ra\n", 4))
+	else if (ft_strncmp(s.ptr, "pa\n", 4) == 0)
+		ft_push_a(ptr_a, ptr_b, ++*s.count_a, --*s.count_b);
+	else if (ft_strncmp(s.ptr, "ra\n", 4) == 0)
 		ft_rotate_a_ra(ptr_a, *s.count_a);
-	if (ft_strncmp(s.ptr, "rra\n", 5))
+	else if (ft_strncmp(s.ptr, "rra\n", 5) == 0)
 		ft_reverse_rotate_a_rra(ptr_a, *s.count_a);
-	if (ft_strncmp(s.ptr, "sb\n", 4))
+	else if (ft_strncmp(s.ptr, "sb\n", 4) == 0)
 		ft_swap_b_sb(ptr_b);
-	if (ft_strncmp(s.ptr, "pb\n", 4))
-	{
-		*s.count_a = *s.count_a - 1;
-		*s.count_b = *s.count_b + 1;
-		ft_push_b(ptr_a, ptr_b, *s.count_a, *s.count_b);
-	}
-	if (ft_strncmp(s.ptr, "rb\n", 4))
+	else if (ft_strncmp(s.ptr, "pb\n", 4) == 0)
+		ft_push_b(ptr_a, ptr_b, --*s.count_a, ++*s.count_b);
+	else if (ft_strncmp(s.ptr, "rb\n", 4) == 0)
 		ft_rotate_b_rb(ptr_b, *s.count_b);
-	if (ft_strncmp(s.ptr, "rrb\n", 5))
+	else if (ft_strncmp(s.ptr, "rrb\n", 5) == 0)
 		ft_reverse_rotate_b_rrb(ptr_b, *s.count_b);
+	else if (ft_strncmp(s.ptr, "ss\n", 4) == 0)
+		ft_swap_ss(ptr_a, ptr_b);
+	else if (ft_strncmp(s.ptr, "rr\n", 4) == 0)
+		ft_rotate_rr(ptr_a, *s.count_a, ptr_b, *s.count_b);
+	else if (ft_strncmp(s.ptr, "rrr\n", 5) == 0)
+		ft_reverse_rotate_rrr(ptr_a, *s.count_a, ptr_b, *s.count_b);
+	else
+		return (-1);
+	return (0);
 }
 
-static void	checker_read(int *ptr_a, int *ptr_b, int count_a)
+int	checker_read(int *ptr_a, int *ptr_b, int count_a)
 {
 	struct s_counts	s;
 	int				count_b;
@@ -48,17 +49,22 @@ static void	checker_read(int *ptr_a, int *ptr_b, int count_a)
 	count_b = 0;
 	s.count_a = &count_a;
 	s.count_b = &count_b;
-	ft_print_stack(ptr_a, *s.count_a);
+	s.ptr = get_next_line(0);
+	checker_action(ptr_a, ptr_b, s);
 	while (s.ptr)
 	{
 		s.ptr = get_next_line(0);
-		ft_printf("%s\n", s.ptr);
 		if (s.ptr)
-			checker_action(ptr_a, ptr_b, s);
-		ft_printf("count j =%d\n", *s.count_a);
+		{
+			if (checker_action(ptr_a, ptr_b, s) == -1)
+				return (ft_printf("Error\n"), -1);
+		}
 	}
-	ft_printf("count_a =%d\n", *s.count_a);
-	ft_print_stack(ptr_a, *s.count_a);
+	if (ft_swap_validator(ptr_a, count_a + 1) == 0)
+		ft_printf("OK\n");
+	else
+		return (ft_printf("KO\n"), -1);
+	return (0);
 }
 
 int	ft_arg_2(char **argv, char **p, int x, int j)
@@ -84,10 +90,9 @@ int	ft_arg_2(char **argv, char **p, int x, int j)
 	if (ft_swap_validator(ptr_a, j + 1) == 0)
 		return (free(ptr_a), 0);
 	ptr_b = malloc((j + 1) * sizeof(int));
-	checker_read(ptr_a, ptr_b, j);
-	free(ptr_a);
-	free(ptr_b);
-	return (0);
+	if (checker_read(ptr_a, ptr_b, j) == -1)
+		return (free(ptr_a), free(ptr_b), -1);
+	return (free(ptr_a), free(ptr_b), 0);
 }
 
 int	main(int argc, char **argv)

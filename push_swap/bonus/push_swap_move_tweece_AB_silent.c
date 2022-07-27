@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_move_tweece_AB.c                         :+:      :+:    :+:   */
+/*   push_swap_move_tweece_AB_silent.c                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 14:21:54 by jaromero          #+#    #+#             */
-/*   Updated: 2022/07/03 14:22:09 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/07/27 11:55:02 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_push_swap.h"
+#include "checker_push_swap.h"
 
 void	ft_swap_tweece(int *ptr)
 {
