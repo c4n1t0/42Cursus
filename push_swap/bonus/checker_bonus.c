@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 11:22:54 by jaromero          #+#    #+#             */
-/*   Updated: 2022/07/28 00:22:04 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/07/28 17:37:52 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,28 @@ int	ft_arg_2(char **argv, char **p, int x, int j)
 	return (free(ptr_a), free(ptr_b), 0);
 }
 
+int	ft_arg_more2(int argc, char **argv)
+{
+	//int		*ptr_a;
+	//int		*ptr_b;
+	char	**str;
+
+	str = NULL;
+	if (ft_push_swap_source_validator(argv, argc, 1) < 0)
+	{
+		ft_printf("Error\n");
+		return (-1);
+	}
+	//ptr_a = ft_resrv_stack1(argc, argv, 1);
+	//if (ft_swap_validator(ptr_a, argc) == 0)
+	//	return (free(ptr_a), 0);
+	//ptr_b = malloc(argc * sizeof(int));
+	scanf("%s", str);
+	//free(ptr_a);
+	//free(ptr_b);
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	int		j;
@@ -108,4 +130,6 @@ int	main(int argc, char **argv)
 		return (0);
 	if (argc == 2)
 		return (ft_arg_2(argv, p, x, j));
+	else if (argc > 2)
+		return (ft_arg_more2(argc, argv));
 }
