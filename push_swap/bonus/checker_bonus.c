@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 11:22:54 by jaromero          #+#    #+#             */
-/*   Updated: 2022/07/28 18:04:50 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/07/29 19:21:45 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int	checker_read(int *ptr_a, int *ptr_b, int count_a)
 	s.count_b = &count_b;
 	s.ptr = get_next_line(0);
 	checker_action(ptr_a, ptr_b, s);
+	free(s.ptr);
 	while (s.ptr)
 	{
 		s.ptr = get_next_line(0);
@@ -59,6 +60,7 @@ int	checker_read(int *ptr_a, int *ptr_b, int count_a)
 			if (checker_action(ptr_a, ptr_b, s) == -1)
 				return (ft_printf("Error\n"), -1);
 		}
+		free(s.ptr);
 	}
 	if (ft_swap_validator(ptr_a, count_a + 1) == 0 && *s.count_b == 0)
 		ft_printf("OK\n");
@@ -97,50 +99,42 @@ int	ft_arg_2(char **argv, char **p, int x, int j)
 
 int	ft_arg_more2(int argc, char **argv)
 {
-	//int		*ptr_a;
-	//int		*ptr_b;
-	char	*str;
+	int	*ptr_a;
+	int	*ptr_b;
 
-	str = NULL;
 	if (ft_push_swap_source_validator(argv, argc, 1) < 0)
 	{
 		ft_printf("Error\n");
 		return (-1);
 	}
-	//ptr_a = ft_resrv_stack1(argc, argv, 1);
-	//if (ft_swap_validator(ptr_a, argc) == 0)
-	//	return (free(ptr_a), 0);
-	//ptr_b = malloc(argc * sizeof(int));
-	scanf("%s", str);
-	//free(ptr_a);
-	//free(ptr_b);
-	return (0);
+	ptr_a = ft_resrv_stack1(argc, argv, 1);
+	if (ft_swap_validator(ptr_a, argc) == 0)
+		return (free(ptr_a), 0);
+	ptr_b = malloc(argc * sizeof(int));
+	if (checker_read(ptr_a, ptr_b, (argc - 1)) == -1)
+		return (free(ptr_a), free(ptr_b), -1);
+	return (free(ptr_a), free(ptr_b), 0);
 }
 
 int	main(int argc, char **argv)
 {
-	// int		j;
-	// char	**p;
-	// int		x;
+	int		j;
+	char	**p;
+	int		x;
 
-	// x = 0;
-	// j = 0;
-	// p = NULL;
-	// if (argc < 2)
-	// 	return (0);
-	// if (argc == 2)
-	// 	return (ft_arg_2(argv, p, x, j));
-	// else if (argc > 2)
-	// 	return (ft_arg_more2(argc, argv));
-	(void)argc;
-	(void)argv;
-	char *str;
-
-	printf("HOLA\n");
-	str = get_next_line(0);
-	while (str)
+	x = 0;
+	j = 0;
+	p = NULL;
+	if (argc < 2)
+		return (0);
+	if (argc == 2)
 	{
-		printf("%s", str);
-		str = get_next_line(0);
+		j = ft_arg_2(argv, p, x, j);
+		return (j);
+	}
+	else if (argc > 2)
+	{
+		j = ft_arg_more2(argc, argv);
+		return (j);
 	}
 }

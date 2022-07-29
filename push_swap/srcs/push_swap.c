@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 11:22:54 by jaromero          #+#    #+#             */
-/*   Updated: 2022/07/21 19:08:21 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/07/29 19:24:58 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,13 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		return (0);
 	if (argc == 2)
-		return (ft_arg_2(argv, p, x, j));
+	{
+		j = ft_arg_2(argv, p, x, j);
+		return (j);
+	}
 	else if (argc > 2)
-		return (ft_arg_more2(argc, argv));
+	{
+		j = ft_arg_more2(argc, argv);
+		return (j);
+	}
 }

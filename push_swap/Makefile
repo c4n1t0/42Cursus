@@ -6,7 +6,7 @@
 #    By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/26 01:08:42 by jaromero          #+#    #+#              #
-#    Updated: 2022/07/28 00:04:31 by jaromero         ###   ########.fr        #
+#    Updated: 2022/07/29 19:49:09 by jaromero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,7 @@ $(NAME):	$(OBJECTS)
 			$(CC) -c $(CFLAGS) $?
 
 bonus:		$(BOBJECTS)
+			##### Compilando LIBFT #####
 			@make -C libft/
 			@cp libft/libft.a bonus/
 			@ar rcs $(NAME_BONUS) $(BOBJECTS)

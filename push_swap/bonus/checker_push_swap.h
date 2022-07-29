@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 21:11:43 by jaromero          #+#    #+#             */
-/*   Updated: 2022/07/27 12:09:38 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/07/29 19:07:20 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int			ft_comprob_int(char **argc, int argn, int start);
 int			ft_swap_validator(int *ptr, int len);
 int			*ft_resrv_stack(int argn, char **argc, int start);
 void		ft_print_stack(int *ptr, int count);
+int			*ft_resrv_stack1(int argn, char **argc, int start);
 
 void		ft_swap_a_sa(int *ptr);
 void		ft_push_a(int *ptrA, int *ptrB, int count_a, int count_b);
@@ -49,6 +50,7 @@ void		ft_reverse_rotate_b_rrb(int *ptr, int count_b);
 void		ft_swap_tweece(int *ptr);
 void		ft_rotate_tweece(int *ptr, int count);
 void		ft_reverse_rotate_tweece(int *ptr, int count);
+
 void		ft_swap_ss(int *ptr_a, int *ptr_b);
 void		ft_rotate_rr(int *ptr_a, int count_a, int *ptr_b, int count_b);
 void		ft_reverse_rotate_rrr(int *ptr_a, int count_a, int *ptr_b,
