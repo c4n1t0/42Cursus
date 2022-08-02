@@ -6,7 +6,7 @@
 /*   By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 11:22:54 by jaromero          #+#    #+#             */
-/*   Updated: 2022/07/29 19:24:58 by jaromero         ###   ########.fr       */
+/*   Updated: 2022/08/02 12:36:24 by jaromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ int	ft_arg_2(char **argv, char **p, int x, int j)
 	p = ft_split(argv[1], ' ');
 	while (p[j])
 		j++;
-	if (j < 2)
-		return (0);
 	if (ft_push_swap_source_validator(p, j, 0) < 0)
 	{
 		ft_printf("Error\n");
 		return (-1);
 	}
+	if (j < 2)
+		return (0);
 	ptr_a = ft_resrv_stack(j + 1, p, 0);
 	x = -1;
 	while (p[++x])
