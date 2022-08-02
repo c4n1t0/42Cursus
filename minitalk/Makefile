@@ -6,7 +6,7 @@
 #    By: jaromero <jaromero@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/01 17:21:57 by jaromero          #+#    #+#              #
-#    Updated: 2022/08/02 10:21:44 by jaromero         ###   ########.fr        #
+#    Updated: 2022/08/02 12:58:17 by jaromero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,8 @@ $(NAME_SERVER):	$(OBJECTS_SERVER)
 				@cp libft/libft.a .
 				@ar rcs $(NAME_SERVER) $(OBJECTS_SERVER)
 				$(CC) $(CFLAGS) $(NAME_SERVER) libft.a -o server
-				gcc -Wall -Wextra -Werror client.c libft.a minitalk.h -o client
+				ar rcs minitalk_client.a client.c
+				gcc -Wall -Wextra -Werror client.c libft.a minitalk_client.a -o client
 			
 
 $(NAME_CLIENT):	$(OBJECTS_CLIENT)
@@ -55,6 +56,8 @@ fclean:
 			rm -f $(NAME_CLIENT)
 			rm -f $(NAME_SERVER)
 			rm -f libft.a
+			rm -f server
+			rm -f client
 
 re:			fclean all
 			
